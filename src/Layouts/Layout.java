@@ -7,9 +7,13 @@
  * 
  */
 
+package Layouts;
+
 public interface Layout {
 	
 	public void clear();
+	
+	public int[] pixels();
 	
 	public void update();
 	

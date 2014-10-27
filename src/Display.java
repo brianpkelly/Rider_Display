@@ -14,6 +14,9 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import Layouts.GridLayout1;
+import Layouts.Layout;
+
 public class Display extends Canvas implements Runnable {
 	
 	// Screen dimensions. Will change when screen size is known
@@ -35,14 +38,13 @@ public class Display extends Canvas implements Runnable {
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
-	// Yada yada yada
-	private Layout layout;
+	private GridLayout1 layout;
 	
 	public Display() {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		// screen = new Screen(width, height);
+		this.layout = new GridLayout1(width, height);
 		this.window = new JFrame();
 	}
 	
@@ -77,7 +79,7 @@ public class Display extends Canvas implements Runnable {
 		while (this.isRunning) {
 			
 			long timeNow = System.nanoTime();
-			timeInterval += (timeStart - timeNow) / (1000000000.0 / 60.0);
+			timeInterval += (timeNow - timeStart) / (1000000000.0 / 60.0);
 			timeStart = timeNow;
 			
 			while (timeInterval >= 1) {
@@ -96,6 +98,7 @@ public class Display extends Canvas implements Runnable {
 	// This ultimately retrieves the current measurements of the variables that are being displayed from the CANCorder database.
 	private void update() {
 		
+		this.layout.update();
 	}
 	
 	// Ultimately draws the components to the screen.
@@ -111,12 +114,12 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		// Get the new set of pixels to be rendered
-		//screen.clear();
-		//screen.render();
+		this.layout.clear();
+		this.layout.render();
 		
 		for (int i = 0; i < this.pixels.length; i++) {
-			//pixels[i] = screen.pixels[i];
-			this.pixels[i] = 0;
+			
+			this.pixels[i] = this.layout.pixels[i];
 		}
 		
 		// More rendering details. Turns the pixel array to an image and actually draws it.

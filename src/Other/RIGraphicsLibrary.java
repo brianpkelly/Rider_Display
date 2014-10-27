@@ -1,3 +1,4 @@
+package Other;
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
