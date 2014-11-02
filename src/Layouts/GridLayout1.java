@@ -18,7 +18,7 @@ public class GridLayout1 implements Layout {
 	public GridLayout1(int width, int height) {
 		
 		this.pixels = new int[width * height];
-		this.component1 = new BarGraph1(width, height, "TirePressure");
+		this.component1 = new BarGraph1(width, height, 0, 0, "TirePressure");
 	}
 
 	@Override
