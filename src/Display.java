@@ -20,9 +20,9 @@ import Layouts.Layout;
 public class Display extends Canvas implements Runnable {
 	
 	// Screen dimensions. Will change when screen size is known
-	public static int width = 300;
-	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int width = 900;
+	public static int height = width / 2;
+	public static int scale = 1;
 	
 	// Controls when the Display runs
 	private boolean isRunning = false;
