@@ -116,10 +116,11 @@ public class Display extends Canvas implements Runnable {
 		// Get the new set of pixels to be rendered
 		this.layout.clear();
 		this.layout.render();
+		int[] layoutPixels = this.layout.pixels();
 		
 		for (int i = 0; i < this.pixels.length; i++) {
 			
-			this.pixels[i] = this.layout.pixels[i];
+			this.pixels[i] = layoutPixels[i];
 		}
 		
 		// More rendering details. Turns the pixel array to an image and actually draws it.

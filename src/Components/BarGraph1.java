@@ -20,7 +20,7 @@ public class BarGraph1 implements Component {
 	
 	public BarGraph1(int width, int height, int xPosition, int yPosition, String variableName) {
 		
-		this.value = 140;
+		this.value = 0;
 		this.variableName = variableName;
 		this.width = width;
 		this.height = height;
@@ -32,22 +32,18 @@ public class BarGraph1 implements Component {
 	public void update() {
 		
 		// Normally, this line would be CANCorder.getValue(this.variableName);
-		this.value -= 1;
+		this.value += 1;
 	}
 
 	@Override
-	public void render(int[] pixels) {
+	public void render(int[][] pixels) {
 		
-		for (int y = this.height; y > this.yPosition; y--) {
-			for (int x = this.width; x > this.xPosition; x--) {
-				if (y > this.value) {
-					pixels[(y * this.width) - x] = 0xFFFFFF;
+		for (int y = this.yPosition; y < this.height + this.yPosition; y++) {
+			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
+				if (y < this.value) {
+					pixels[y][x] = 0xFFFFFF;
 				}
-				
 			}
 		}
-		
-		return;
 	}
-
 }
