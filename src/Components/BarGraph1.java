@@ -7,6 +7,8 @@
 
 package Components;
 
+import java.util.Random;
+
 import Other.CANCorder;
 
 public class BarGraph1 implements Component {
@@ -20,7 +22,7 @@ public class BarGraph1 implements Component {
 	
 	public BarGraph1(int width, int height, int xPosition, int yPosition, String variableName) {
 		
-		this.value = 0;
+		this.value = this.height;
 		this.variableName = variableName;
 		this.width = width;
 		this.height = height;
@@ -33,6 +35,7 @@ public class BarGraph1 implements Component {
 		
 		// Normally, this line would be CANCorder.getValue(this.variableName);
 		this.value += 1;
+		this.value %= this.height;
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class BarGraph1 implements Component {
 		
 		for (int y = this.yPosition; y < this.height + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
-				if (y < this.value) {
+				if (y > this.height - this.value) {
 					pixels[y][x] = 0xFFFFFF;
 				}
 			}
