@@ -9,7 +9,7 @@ package Components;
 
 import java.util.Random;
 
-import Other.CANCorder;
+import Data.CANCorder;
 
 public class BarGraph1 implements Component {
 	

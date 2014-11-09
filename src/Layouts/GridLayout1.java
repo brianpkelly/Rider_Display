@@ -9,6 +9,7 @@ package Layouts;
 
 import Components.BarGraph1;
 import Components.Component;
+import Components.FCHMGauge;
 import Components.Gauge1;
 
 public class GridLayout1 implements Layout {
@@ -25,7 +26,8 @@ public class GridLayout1 implements Layout {
 		this.width = width;
 		this.height = height;
 		this.pixels = new int[height][width];
-		this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
+		this.component1 = new FCHMGauge(width / 2, 0, 0, "TirePressure");
+		//this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
 		//this.component1 = new Gauge1(width / 2, 0, 0, "TirePressure");
 		this.component2 = new BarGraph1(width / 4, height / 2, width / 2, 0, "Battery Voltage");
 		this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
