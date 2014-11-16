@@ -16,7 +16,7 @@ public class FCHMGauge implements Component {
 	private int width;
 	private int xPosition;
 	private int yPosition;
-	public final int SPRITE_SIZE = 512;
+	public final int SPRITE_SIZE = 474;
 	public SpriteSheet spritesheet;
 	
 	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
@@ -26,7 +26,7 @@ public class FCHMGauge implements Component {
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge.png", SPRITE_SIZE);
+		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_long.png", SPRITE_SIZE);
 	}
 
 	@Override
@@ -38,10 +38,11 @@ public class FCHMGauge implements Component {
 
 	@Override
 	public void render(int[][] pixels) {
+		int index = this.value * this.SPRITE_SIZE;
 		for (int y = this.yPosition; y < this.width + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
 				
-				pixels[y][x] = spritesheet.pixels[(y * 6669) + x + ((this.SPRITE_SIZE * this.value) % 6669)];
+				pixels[y][x] = spritesheet.pixels[(y * 61944) + x + index];
 			}
 		}
 	}
