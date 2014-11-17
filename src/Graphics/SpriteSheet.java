@@ -24,7 +24,7 @@ public class SpriteSheet {
 		
 		this.path = path;
 		this.SIZE = size;
-		this.pixels = new int[6669 * 5129];
+		this.pixels = new int[33024 * 256];
 		this.load();
 	}
 	

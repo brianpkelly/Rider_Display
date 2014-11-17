@@ -7,14 +7,20 @@
 
 package Layouts;
 
-import Components.BarGraph1;
 import Components.Component;
 import Components.FCHMGauge;
-import Components.Gauge1;
+
+import java.awt.image.BufferedImage;
+import java.io.EOFException;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class GridLayout1 implements Layout {
 	
 	public int[][] pixels;
+	private int[] bgPixels;
 	private Component component1;
 	private Component component2;
 	private Component component3;
@@ -26,11 +32,29 @@ public class GridLayout1 implements Layout {
 		this.width = width;
 		this.height = height;
 		this.pixels = new int[height][width];
-		this.component1 = new FCHMGauge(width / 2, 0, 0, "TirePressure");
+		this.bgPixels = new int[height * width];
+		
+		File bgImage = null;
+		try {
+			bgImage = new File("res/background.png");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			BufferedImage image = ImageIO.read(bgImage);
+			int iwidth = image.getWidth();
+			int iheight = image.getHeight();
+			image.getRGB(0, 0, iwidth, iheight, this.bgPixels, 0, iwidth);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		this.component1 = new FCHMGauge(width / 4, 0, 0, "TirePressure");
 		//this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
 		//this.component1 = new Gauge1(width / 2, 0, 0, "TirePressure");
-		this.component2 = new BarGraph1(width / 4, height / 2, width / 2, 0, "Battery Voltage");
-		this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
+		this.component2 = new FCHMGauge(width / 4, width / 2, 0, "Battery Voltage");
+		//this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
 	}
 
 	@Override
@@ -38,7 +62,7 @@ public class GridLayout1 implements Layout {
 		
 		for (int y = 0; y < this.height; y++) {
 			for (int x = 0; x < this.width; x++) {
-				this.pixels[y][x] = 0;
+				this.pixels[y][x] = this.bgPixels[y * this.width + x];
 			}
 		}
 	}
@@ -62,7 +86,7 @@ public class GridLayout1 implements Layout {
 		
 		this.component1.update();
 		this.component2.update();
-		this.component3.update();
+		//this.component3.update();
 	}
 
 	@Override
@@ -70,7 +94,7 @@ public class GridLayout1 implements Layout {
 		
 		this.component1.render(this.pixels);
 		this.component2.render(this.pixels);
-		this.component3.render(this.pixels);
+		//this.component3.render(this.pixels);
 	}
 
 }

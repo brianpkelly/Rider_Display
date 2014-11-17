@@ -19,9 +19,8 @@ import Layouts.Layout;
 
 public class Display extends Canvas implements Runnable {
 	
-	// Screen dimensions. Will change when screen size is known
-	public static int width = 900;
-	public static int height = width / 2;
+	public static int width = 1024;
+	public static int height = 600;
 	public static int scale = 1;
 	
 	// Controls when the Display runs
@@ -142,7 +141,7 @@ public class Display extends Canvas implements Runnable {
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		display.window.setLocationRelativeTo(null);
 		display.window.setVisible(true);
-		
+
 		display.start();
 	}	
 }
