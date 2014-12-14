@@ -15,9 +15,11 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import Layouts.GridLayout1;
-import Layouts.Layout;
 
 public class Display extends Canvas implements Runnable {
+	
+	// Keep the compiler happy
+	static final long serialVersionUID = 42L;
 	
 	public static int width = 1024;
 	public static int height = 600;

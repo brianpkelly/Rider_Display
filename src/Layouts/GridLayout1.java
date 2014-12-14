@@ -9,6 +9,7 @@ package Layouts;
 
 import Components.Component;
 import Components.FCHMGauge;
+import Graphics.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 import java.io.EOFException;
@@ -34,15 +35,8 @@ public class GridLayout1 implements Layout {
 		this.pixels = new int[height][width];
 		this.bgPixels = new int[height * width];
 		
-		File bgImage = null;
 		try {
-			bgImage = new File("res/background.png");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			BufferedImage image = ImageIO.read(bgImage);
+			BufferedImage image = ImageIO.read(GridLayout1.class.getResource("/background.png"));
 			int iwidth = image.getWidth();
 			int iheight = image.getHeight();
 			image.getRGB(0, 0, iwidth, iheight, this.bgPixels, 0, iwidth);
@@ -53,7 +47,7 @@ public class GridLayout1 implements Layout {
 		this.component1 = new FCHMGauge(width / 4, 0, 0, "TirePressure");
 		//this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
 		//this.component1 = new Gauge1(width / 2, 0, 0, "TirePressure");
-		this.component2 = new FCHMGauge(width / 4, width / 2, 0, "Battery Voltage");
+		this.component2 = new FCHMGauge(width / 4, width / 2, 0, "BatteryVoltage");
 		//this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
 	}
 

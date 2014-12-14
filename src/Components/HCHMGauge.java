@@ -9,7 +9,7 @@ package Components;
 
 import Graphics.SpriteSheet;
 
-public class FCHMGauge implements Component {
+public class HCHMGauge implements Component {
 	
 	private String variableName;
 	private int value;
@@ -19,14 +19,14 @@ public class FCHMGauge implements Component {
 	public final int SPRITE_SIZE = 256;
 	public SpriteSheet spritesheet;
 	
-	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
+	public HCHMGauge(int width, int xPosition, int yPosition, String variableName) {
 		
 		this.value = 0;
 		this.variableName = variableName;
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE);
+		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE);
 	}
 
 	@Override

@@ -8,8 +8,6 @@
 package Graphics;
 
 import java.awt.image.BufferedImage;
-import java.io.EOFException;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -30,20 +28,12 @@ public class SpriteSheet {
 	
 	private void load() {
 		
-		File spritesheet = null;
-		
 		try {
-			spritesheet = new File(this.path);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			BufferedImage image = ImageIO.read(spritesheet);
+			BufferedImage image = ImageIO.read(SpriteSheet.class.getResource(path));
 			int width = image.getWidth();
 			int height = image.getHeight();
 			image.getRGB(0, 0, width, height, this.pixels, 0, width);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
