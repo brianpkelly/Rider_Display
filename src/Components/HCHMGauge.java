@@ -17,6 +17,7 @@ public class HCHMGauge implements Component {
 	private int xPosition;
 	private int yPosition;
 	public final int SPRITE_SIZE = 256;
+	public final int SPRITE_NUMBER = 129;
 	public SpriteSheet spritesheet;
 	
 	public HCHMGauge(int width, int xPosition, int yPosition, String variableName) {
@@ -26,7 +27,7 @@ public class HCHMGauge implements Component {
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE);
+		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
 	}
 
 	@Override

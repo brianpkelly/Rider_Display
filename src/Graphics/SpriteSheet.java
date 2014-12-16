@@ -8,21 +8,24 @@
 package Graphics;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 public class SpriteSheet {
 	
 	private String path;
-	public final int SIZE;
+	public final int HEIGHT;
+	public final int WIDTH;
+	public final int NUMBER;
 	public int[] pixels;
 	
-	public SpriteSheet(String path, int size) {
+	public SpriteSheet(String path, int height, int width, int number) {
 		
 		this.path = path;
-		this.SIZE = size;
-		this.pixels = new int[33024 * 256];
+		this.HEIGHT = height;
+		this.WIDTH = width;
+		this.NUMBER = number;
+		this.pixels = new int[this.HEIGHT * this.WIDTH * this.NUMBER];
 		this.load();
 	}
 	
