@@ -44,7 +44,7 @@ public class HCHMGauge implements Component {
 		for (int y = this.yPosition; y < this.width + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
 				
-				int pixel = this.spritesheet.pixels[(y * this.SPRITE_SIZE * 129) + x + index];
+				int pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_SIZE * 129) + (x - this.xPosition) + index];
 				if (pixel != -16777216) {
 					pixels[y][x] = pixel;
 				}

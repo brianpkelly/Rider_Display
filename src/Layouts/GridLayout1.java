@@ -25,6 +25,7 @@ public class GridLayout1 implements Layout {
 	private Component component1;
 	private Component component2;
 	private Component component3;
+	private Component component4;
 	private int width;
 	private int height;
 	
@@ -44,11 +45,10 @@ public class GridLayout1 implements Layout {
 			e.printStackTrace();
 		}
 		
-		this.component1 = new FCHMGauge(width / 4, 0, 0, "TirePressure");
-		//this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
-		//this.component1 = new Gauge1(width / 2, 0, 0, "TirePressure");
-		this.component2 = new FCHMGauge(width / 4, width / 2, 0, "BatteryVoltage");
-		//this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
+		this.component1 = new FCHMGauge(this.width / 4, 0, 0, "TirePressure");
+		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, "BatteryVoltage");
+		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, "RPM");
+		this.component4 = new FCHMGauge(this.width / 4, (3 * this.width) / 4, 0, "MotorTemp");
 	}
 
 	@Override
@@ -80,7 +80,8 @@ public class GridLayout1 implements Layout {
 		
 		this.component1.update();
 		this.component2.update();
-		//this.component3.update();
+		this.component3.update();
+		this.component4.update();
 	}
 
 	@Override
@@ -88,7 +89,8 @@ public class GridLayout1 implements Layout {
 		
 		this.component1.render(this.pixels);
 		this.component2.render(this.pixels);
-		//this.component3.render(this.pixels);
+		this.component3.render(this.pixels);
+		this.component4.render(this.pixels);
 	}
 
 }
