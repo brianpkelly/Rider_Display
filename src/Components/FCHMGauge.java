@@ -1,7 +1,7 @@
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
- * Description: This is the a full circle heat map gauge generated from a sprite sheet.
+ * Description: This is a full circle heat map gauge generated from a sprite sheet.
  * 
  */
 
@@ -27,7 +27,7 @@ public class FCHMGauge implements Component {
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
+		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
 	}
 
 	@Override

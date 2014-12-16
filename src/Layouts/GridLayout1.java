@@ -9,6 +9,7 @@ package Layouts;
 
 import Components.Component;
 import Components.FCHMGauge;
+import Components.HCHMGauge;
 import Graphics.SpriteSheet;
 
 import java.awt.image.BufferedImage;
@@ -48,7 +49,7 @@ public class GridLayout1 implements Layout {
 		this.component1 = new FCHMGauge(this.width / 4, 0, 0, "TirePressure");
 		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, "BatteryVoltage");
 		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, "RPM");
-		this.component4 = new FCHMGauge(this.width / 4, (3 * this.width) / 4, 0, "MotorTemp");
+		this.component4 = new HCHMGauge(this.width / 4, (3 * this.width) / 4, 0, "MotorTemp");
 	}
 
 	@Override
