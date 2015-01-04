@@ -7,6 +7,7 @@
 
 package Components;
 
+import Data.CANCorder;
 import Graphics.SpriteSheet;
 
 public class HCHMGauge implements Component {
@@ -34,8 +35,7 @@ public class HCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		this.value += 1;
-		this.value %= this.SPRITE_NUMBER;
+		CANCorder.getValue(variableName);
 	} 
 
 	@Override

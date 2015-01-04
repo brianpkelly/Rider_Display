@@ -15,8 +15,8 @@ public class CANCorder {
 	private final String DB_URL = "jdbc:mysql://localhost:3306/";
 	private final String DB_NAME = "CANCorder";
 	private final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private final String DB_USER_NAME = "rider_display"; 
-	private final String DB_PASSWORD = "current";
+	private final String DB_USER_NAME = "cancorder"; 
+	private final String DB_PASSWORD = "";
 	
 	private Connection connection;
 
