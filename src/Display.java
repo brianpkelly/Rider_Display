@@ -1,7 +1,7 @@
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
- * Description: This is the overarching class and executable. Most of the code is administrative.
+ * Description: This is the over-arching class and executable. Most of the code is administrative.
  * 
  */
 
@@ -14,6 +14,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import Data.CANCorder;
 import Layouts.GridLayout1;
 
 public class Display extends Canvas implements Runnable {
@@ -40,6 +41,9 @@ public class Display extends Canvas implements Runnable {
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	private GridLayout1 layout;
+	private CANCorder cancorder;
+	
+	// Constants for connecting to the database
 	
 	public Display() {
 		
@@ -143,7 +147,14 @@ public class Display extends Canvas implements Runnable {
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		display.window.setLocationRelativeTo(null);
 		display.window.setVisible(true);
-
+		
+		// Connect to CANcorder database
+		display.cancorder = new CANCorder();
+		
+		// Start the display
 		display.start();
+		
+		// Disconnect from CANcorder database
+		
 	}	
 }
