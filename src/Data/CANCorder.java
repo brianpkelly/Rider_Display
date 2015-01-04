@@ -18,6 +18,11 @@ public class CANCorder {
 	private final String DB_USER_NAME = "cancorder"; 
 	private final String DB_PASSWORD = "";
 	
+	// String constants for CAN variable names, used in the Layout objects
+	public final static String RPM = "rpm";
+	public final static String TIRE_PRESSURE = "tire_pressure";
+	public final static String BATTERY_VOLTAGE = "batt_volt";
+	
 	private Connection connection;
 
 	

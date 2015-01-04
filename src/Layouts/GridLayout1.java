@@ -10,6 +10,7 @@ package Layouts;
 import Components.Component;
 import Components.FCHMGauge;
 import Components.HCHMGauge;
+import Data.CANCorder;
 import Graphics.SpriteSheet;
 
 import java.awt.image.BufferedImage;
@@ -46,10 +47,10 @@ public class GridLayout1 implements Layout {
 			e.printStackTrace();
 		}
 		
-		this.component1 = new FCHMGauge(this.width / 4, 0, 0, "TirePressure");
-		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, "BatteryVoltage");
-		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, "RPM");
-		this.component4 = new HCHMGauge(this.width / 4, (3 * this.width) / 4, this.width / 4, "MotorTemp");
+		this.component1 = new FCHMGauge(this.width / 4, 0, 0, CANCorder.RPM);
+		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
+		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);
+		this.component4 = new HCHMGauge(this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM);
 	}
 
 	@Override
