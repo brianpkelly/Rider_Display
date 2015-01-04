@@ -17,14 +17,23 @@ public class CANCorder {
 	private final String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private final String DB_USER_NAME = "rider_display"; 
 	private final String DB_PASSWORD = "current";
+	
+	private Connection connection;
 
 	
 	public CANCorder() {
 		try {
 			Class.forName(DB_DRIVER);
-			Connection conn = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
-			conn.close();
+			connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void close() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
