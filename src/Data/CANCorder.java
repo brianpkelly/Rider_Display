@@ -1,4 +1,8 @@
 package Data;
+
+
+import java.sql.*;
+
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
@@ -16,7 +20,13 @@ public class CANCorder {
 
 	
 	public CANCorder() {
-		
+		try {
+			Class.forName(DB_DRIVER);
+			Connection conn = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
