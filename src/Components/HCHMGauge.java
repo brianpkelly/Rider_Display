@@ -35,7 +35,7 @@ public class HCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		CANCorder.getValue(variableName);
+		value = (int) CANCorder.getValue(variableName);
 	} 
 
 	@Override
