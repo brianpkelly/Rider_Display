@@ -18,7 +18,7 @@ public class HCHMGauge implements Component {
 	private int xPosition;
 	private int yPosition;
 	public final int SPRITE_WIDTH = 256;
-	public final int SPRITE_HEIGHT = 256;
+	public final int SPRITE_HEIGHT = 138;
 	public final int SPRITE_NUMBER = 129;
 	public SpriteSheet spritesheet;
 	
@@ -44,10 +44,10 @@ public class HCHMGauge implements Component {
 	public void render(int[][] pixels) {
 
 		int index = this.value * this.SPRITE_WIDTH;
-		for (int y = this.yPosition; y < this.width + this.yPosition; y++) {
-			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
+		for (int y = this.yPosition; y < this.SPRITE_HEIGHT + this.yPosition; y++) {
+			for (int x = this.xPosition; x < this.SPRITE_WIDTH + this.xPosition; x++) {
 				
-				int pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_HEIGHT * this.SPRITE_NUMBER) + (x - this.xPosition) + index];
+				int pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_WIDTH * this.SPRITE_NUMBER) + (x - this.xPosition) + index];
 				if (pixel != -16777216) {
 					pixels[y][x] = pixel;
 				}

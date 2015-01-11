@@ -141,7 +141,7 @@ public class Display extends Canvas implements Runnable {
 		
 		// Set a variety of JFrame properties for the Display
 		display.window.setResizable(false);
-		display.window.setTitle("Rider Interface");
+		display.window.setTitle("Rider Display");
 		display.window.add(display);
 		display.window.pack();
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
