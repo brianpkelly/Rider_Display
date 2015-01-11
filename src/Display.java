@@ -155,6 +155,6 @@ public class Display extends Canvas implements Runnable {
 		display.start();
 		
 		// Disconnect from CANcorder database
-		display.cancorder.close();
+		//display.cancorder.close();
 	}	
 }

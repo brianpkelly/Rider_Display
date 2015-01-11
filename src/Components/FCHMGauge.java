@@ -34,7 +34,9 @@ public class FCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		value = (int) CANCorder.getValue(variableName);
+		//this.value = (int) CANCorder.getValue(variableName);
+		this.value += 1;
+		this.value %= 129;
 	} 
 
 	@Override

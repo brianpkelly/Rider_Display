@@ -12,11 +12,11 @@ import java.sql.*;
 
 public class CANCorder {
 	// Constants for connecting to the database
-	private final String DB_URL = "jdbc:mysql://localhost:3306/";
-	private final String DB_NAME = "CANCorder";
-	private final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private final String DB_USER_NAME = "cancorder"; 
-	private final String DB_PASSWORD = "";
+	private final static String DB_URL = "jdbc:mysql://localhost:3306/";
+	private final static String DB_NAME = "CANCorder";
+	private final static String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private final static String DB_USER_NAME = "cancorder"; 
+	private final static String DB_PASSWORD = "";
 	
 	// String constants for CAN variable names, used in the Layout objects
 	public final static String RPM = "rpm";
@@ -29,7 +29,7 @@ public class CANCorder {
 	public CANCorder() {
 		try {
 			Class.forName(DB_DRIVER);
-			connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
+			this.connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class CANCorder {
 	
 	public void close() {
 		try {
-			connection.close();
+			this.connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
