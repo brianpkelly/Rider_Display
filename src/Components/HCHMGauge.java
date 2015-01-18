@@ -21,6 +21,7 @@ public class HCHMGauge implements Component {
 	public final int SPRITE_HEIGHT = 138;
 	public final int SPRITE_NUMBER = 129;
 	public SpriteSheet spritesheet;
+	private CANCorder cancorder;
 	
 	public HCHMGauge(int width, int xPosition, int yPosition, String variableName) {
 		
@@ -30,12 +31,13 @@ public class HCHMGauge implements Component {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.spritesheet = new SpriteSheet("/spritesheets/hchm_gauge.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
+		this.cancorder = new CANCorder();
 	}
 
 	@Override
 	public void update() {
 		
-		//value = (int) CANCorder.getValue(variableName);
+		value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
 		this.value %= 129;
 	} 

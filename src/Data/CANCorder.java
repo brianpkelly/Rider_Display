@@ -44,7 +44,8 @@ public class CANCorder {
 	}
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
-	public static double getValue(String variableName) {
+	public double getValue(String variableName) {
+		String query = "";
 		
 		double value = 0;
 		return value;

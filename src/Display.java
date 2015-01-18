@@ -41,7 +41,6 @@ public class Display extends Canvas implements Runnable {
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	private GridLayout1 layout;
-	private CANCorder cancorder;
 	
 	// Constants for connecting to the database
 	
@@ -148,13 +147,7 @@ public class Display extends Canvas implements Runnable {
 		display.window.setLocationRelativeTo(null);
 		display.window.setVisible(true);
 		
-		// Connect to CANcorder database
-		display.cancorder = new CANCorder();
-		
 		// Start the display
 		display.start();
-		
-		// Disconnect from CANcorder database
-		display.cancorder.close();
 	}	
 }

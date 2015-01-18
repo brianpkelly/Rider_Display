@@ -20,6 +20,7 @@ public class FCHMGauge implements Component {
 	public final int SPRITE_SIZE = 256;
 	public final int SPRITE_NUMBER = 129;
 	public SpriteSheet spritesheet;
+	private CANCorder cancorder;
 	
 	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
 		
@@ -29,12 +30,13 @@ public class FCHMGauge implements Component {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
+		this.cancorder = new CANCorder();
 	}
 
 	@Override
 	public void update() {
 		
-		//this.value = (int) CANCorder.getValue(variableName);
+		this.value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
 		this.value %= 129;
 	} 
