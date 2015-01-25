@@ -36,7 +36,7 @@ public class FCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		this.value = (int) this.cancorder.getValue(variableName);
+		//this.value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
 		this.value %= 129;
 	} 
@@ -49,9 +49,7 @@ public class FCHMGauge implements Component {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
 				
 				int pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_SIZE * this.SPRITE_NUMBER) + (x - this.xPosition) + index];
-				if (pixel != -16777216) {
-					pixels[y][x] = pixel;
-				}
+				pixels[y][x] = pixel;
 			}
 		}
 	}

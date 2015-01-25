@@ -27,20 +27,20 @@ public class CANCorder {
 
 	
 	public CANCorder() {
-		try {
+		/*try {
 			Class.forName(DB_DRIVER);
 			this.connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void close() {
-		try {
+		/*try {
 			this.connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.

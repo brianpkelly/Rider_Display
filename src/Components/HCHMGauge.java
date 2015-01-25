@@ -37,7 +37,7 @@ public class HCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		value = (int) this.cancorder.getValue(variableName);
+		//value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
 		this.value %= 129;
 	} 
@@ -50,8 +50,9 @@ public class HCHMGauge implements Component {
 			for (int x = this.xPosition; x < this.SPRITE_WIDTH + this.xPosition; x++) {
 				
 				int pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_WIDTH * this.SPRITE_NUMBER) + (x - this.xPosition) + index];
+				pixels[y][x] = pixel;
 				if (pixel != -16777216) {
-					pixels[y][x] = pixel;
+					
 				}
 			}
 		}

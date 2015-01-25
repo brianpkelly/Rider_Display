@@ -7,6 +7,7 @@
 
 package Layouts;
 
+import Components.BarGraph1;
 import Components.Component;
 import Components.FCHMGauge;
 import Components.HCHMGauge;
@@ -47,6 +48,10 @@ public class GridLayout1 implements Layout {
 			e.printStackTrace();
 		}
 		
+		/*this.component1 = new BarGraph1(this.width / 4 - 10, this.height / 2, 0, 0, CANCorder.RPM);
+		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
+		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
+		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
 		this.component1 = new FCHMGauge(this.width / 4, 0, 0, CANCorder.RPM);
 		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
 		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);

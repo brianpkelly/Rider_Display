@@ -76,23 +76,20 @@ public class Display extends Canvas implements Runnable {
 	@Override
 	public void run() {
 		
-		// Variable to control the refresh rate for rendering. Might be unnecessary.
-		long timeStart = System.nanoTime();
-		double timeInterval = 0;
+		// Counters to keep an eye on performance
+		int fpsCount = 0;
+		long timeCount = System.currentTimeMillis();
 		
 		while (this.isRunning) {
 			
-			long timeNow = System.nanoTime();
-			timeInterval += (timeNow - timeStart) / (1000000000.0 / 60.0);
-			timeStart = timeNow;
-			
-			while (timeInterval >= 1) {
-				
-				this.update();
-				timeInterval--;
-			}
-			
+			this.update();
 			this.render();
+			fpsCount++;
+			if (System.currentTimeMillis() - timeCount >= 1000) {
+				timeCount += 1000;
+				this.window.setTitle("Rider Display | FPS: " + fpsCount);
+				fpsCount = 0;
+			}
 		}
 		
 		this.stop();	
@@ -118,7 +115,7 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		// Get the new set of pixels to be rendered
-		this.layout.clear();
+		//this.layout.clear();
 		this.layout.render();
 		int[] layoutPixels = this.layout.pixels();
 		
