@@ -29,6 +29,11 @@ public class GridLayout1 implements Layout {
 	private Component component2;
 	private Component component3;
 	private Component component4;
+	private Thread component1Thread;
+	private Thread component2Thread;
+	private Thread component3Thread;
+	private Thread component4Thread;
+	
 	private int width;
 	private int height;
 	
@@ -56,6 +61,10 @@ public class GridLayout1 implements Layout {
 		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
 		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);
 		this.component4 = new HCHMGauge(this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM);
+		this.component1Thread = new Thread(new RenderThread(this.component1, this.pixels));
+		this.component2Thread = new Thread(new RenderThread(this.component2, this.pixels));
+		this.component3Thread = new Thread(new RenderThread(this.component3, this.pixels));
+		this.component4Thread = new Thread(new RenderThread(this.component4, this.pixels));
 	}
 
 	@Override
@@ -94,10 +103,35 @@ public class GridLayout1 implements Layout {
 	@Override
 	public void render() {
 		
-		this.component1.render(this.pixels);
+		/*this.component1.render(this.pixels);
 		this.component2.render(this.pixels);
 		this.component3.render(this.pixels);
-		this.component4.render(this.pixels);
+		this.component4.render(this.pixels);*/
+		/*(new Thread(new RenderThread(this.component1, this.pixels))).start();
+		(new Thread(new RenderThread(this.component2, this.pixels))).start();
+		(new Thread(new RenderThread(this.component3, this.pixels))).start();
+		(new Thread(new RenderThread(this.component4, this.pixels))).start();*/
+		this.component1Thread.run();
+		this.component2Thread.run();
+		this.component3Thread.run();
+		this.component4Thread.run();
+	}
+	
+	private class RenderThread implements Runnable {
+		
+		private Component component;
+		public int[][] pixels;
+		
+		public RenderThread(Component component, int[][] pixels) {
+			this.component = component;
+			this.pixels = pixels;
+		}
+
+		@Override
+		public void run() {
+			this.component.render(this.pixels);
+		}
+		
 	}
 
 }
