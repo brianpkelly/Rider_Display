@@ -23,7 +23,7 @@ import javax.imageio.ImageIO;
 
 public class GridLayout1 implements Layout {
 	
-	public int[][] pixels;
+	public int[] pixels;
 	private int[] bgPixels;
 	private Component component1;
 	private Component component2;
@@ -36,7 +36,7 @@ public class GridLayout1 implements Layout {
 		
 		this.width = width;
 		this.height = height;
-		this.pixels = new int[height][width];
+		this.pixels = new int[height * width];
 		this.bgPixels = new int[height * width];
 		
 		try {
@@ -52,10 +52,10 @@ public class GridLayout1 implements Layout {
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
 		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
-		this.component1 = new FCHMGauge(this.width / 4, 0, 0, CANCorder.RPM);
-		this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
-		this.component3 = new FCHMGauge(this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);
-		this.component4 = new HCHMGauge(this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM);
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.RPM);
+		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
+		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);
+		this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class GridLayout1 implements Layout {
 		
 		for (int y = 0; y < this.height; y++) {
 			for (int x = 0; x < this.width; x++) {
-				this.pixels[y][x] = this.bgPixels[y * this.width + x];
+				this.pixels[y * this.width + x] = this.bgPixels[y * this.width + x];
 			}
 		}
 	}
@@ -71,15 +71,7 @@ public class GridLayout1 implements Layout {
 	@Override
 	public int[] pixels() {
 		
-		int[] a = new int[this.height * this.width];
-		
-		for (int y = 0; y < this.height; y++) {
-			for (int x = 0; x < this.width; x++) {
-				a[(y * this.width) + x] =  this.pixels[y][x];
-			}
-		}
-		
-		return a;
+		return this.pixels;
 	}
 
 	@Override
