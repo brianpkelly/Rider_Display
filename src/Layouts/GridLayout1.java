@@ -32,11 +32,11 @@ public class GridLayout1 implements Layout {
 	private int width;
 	private int height;
 	
-	public GridLayout1(int width, int height) {
+	public GridLayout1(int width, int height, int[] pixels) {
 		
 		this.width = width;
 		this.height = height;
-		this.pixels = new int[height * width];
+		this.pixels = pixels;
 		this.bgPixels = new int[height * width];
 		
 		try {
@@ -52,10 +52,10 @@ public class GridLayout1 implements Layout {
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
 		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
-		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.RPM);
-		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE);
-		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE);
-		this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM);
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.RPM, this.pixels);
+		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE, this.pixels);
+		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE, this.pixels);
+		this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels);
 	}
 
 	@Override
@@ -86,10 +86,10 @@ public class GridLayout1 implements Layout {
 	@Override
 	public void render() {
 		
-		this.component1.render(this.pixels);
-		this.component2.render(this.pixels);
-		this.component3.render(this.pixels);
-		this.component4.render(this.pixels);
+		this.component1.render();
+		this.component2.render();
+		this.component3.render();
+		this.component4.render();
 	}
 
 }

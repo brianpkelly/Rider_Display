@@ -48,7 +48,7 @@ public class Display extends Canvas implements Runnable {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		this.layout = new GridLayout1(width, height);
+		this.layout = new GridLayout1(width, height, pixels);
 		this.window = new JFrame();
 	}
 	
@@ -117,12 +117,6 @@ public class Display extends Canvas implements Runnable {
 		// Get the new set of pixels to be rendered
 		//this.layout.clear();
 		this.layout.render();
-		int[] layoutPixels = this.layout.pixels();
-		
-		for (int i = 0; i < this.pixels.length; i++) {
-			
-			this.pixels[i] = layoutPixels[i];
-		}
 		
 		// More rendering details. Turns the pixel array to an image and actually draws it.
 		Graphics graphics = buffStrat.getDrawGraphics();

@@ -20,8 +20,9 @@ public class BarGraph1 implements Component {
 	private int xPosition;
 	private int yPosition;
 	private int layoutWidth;
+	private int[] pixels;
 	
-	public BarGraph1(int layoutWidth, int width, int height, int xPosition, int yPosition, String variableName) {
+	public BarGraph1(int layoutWidth, int width, int height, int xPosition, int yPosition, String variableName, int[] pixels) {
 		
 		this.value = this.height;
 		this.variableName = variableName;
@@ -29,6 +30,7 @@ public class BarGraph1 implements Component {
 		this.height = height;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
+		this.pixels = pixels;
 	}
 
 	@Override
@@ -40,12 +42,12 @@ public class BarGraph1 implements Component {
 	}
 
 	@Override
-	public void render(int[] pixels) {
+	public void render() {
 		
 		for (int y = this.yPosition; y < this.height + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
 				if (y > this.height - this.value) {
-					pixels[y * this.layoutWidth + x] = 0xFFFFFF;
+					this.pixels[y * this.layoutWidth + x] = 0xFFFFFF;
 				}
 			}
 		}

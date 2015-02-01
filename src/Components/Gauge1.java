@@ -8,14 +8,16 @@ public class Gauge1 implements Component{
 	private int xPosition;
 	private int yPosition;
 	private int layoutWidth;
+	private int[] pixels;
 
-	public Gauge1(int layoutWidth, int diameter, int xPosition, int yPosition, String variableName) {
+	public Gauge1(int layoutWidth, int diameter, int xPosition, int yPosition, String variableName, int[] pixels) {
 		
 		this.value = this.radius;
 		this.variableName = variableName;
 		this.radius = diameter / 2;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
+		this.pixels = pixels;
 	}
 
 	@Override
@@ -27,7 +29,7 @@ public class Gauge1 implements Component{
 	}
 
 	@Override
-	public void render(int[] pixels) {
+	public void render() {
 		
 		for (int y = this.yPosition; y < this.radius * 2 + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.radius * 2 + this.xPosition; x++) {
@@ -37,9 +39,9 @@ public class Gauge1 implements Component{
 				boolean isInCircle = xMag * xMag + yMag * yMag <= this.radius;
 				
 				if (isInCircle) {
-					pixels[y * this.layoutWidth + x] = 0xFFFFFF;
+					this.pixels[y * this.layoutWidth + x] = 0xFFFFFF;
 				} else {
-					pixels[y * this.layoutWidth + x] = 0x003366;
+					this.pixels[y * this.layoutWidth + x] = 0x003366;
 				}
 			}
 		}
