@@ -1,0 +1,148 @@
+Thread 0xf37bd280
+
+  locals:
+
+Thread 0xf2e17b00
+
+  locals:
+
+Thread 0xf2ca1740
+  at sun.java2d.loops.Blit.Blit(Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;Ljava/awt/Composite;Lsun/java2d/pipe/Region;IIIIII)V (Native Method)
+  at sun.java2d.pipe.DrawImage.blitSurfaceData(Lsun/java2d/SunGraphics2D;Lsun/java2d/pipe/Region;Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;Lsun/java2d/loops/SurfaceType;Lsun/java2d/loops/SurfaceType;IIIIIILjava/awt/Color;)V (DrawImage.java:955)
+  at sun.java2d.pipe.DrawImage.renderImageCopy(Lsun/java2d/SunGraphics2D;Ljava/awt/Image;Ljava/awt/Color;IIIIII)Z (DrawImage.java:576)
+  at sun.java2d.pipe.DrawImage.copyImage(Lsun/java2d/SunGraphics2D;Ljava/awt/Image;IIIIIILjava/awt/Color;)Z (DrawImage.java:86)
+  at sun.java2d.pipe.DrawImage.copyImage(Lsun/java2d/SunGraphics2D;Ljava/awt/Image;IIIIIILjava/awt/Color;Ljava/awt/image/ImageObserver;)Z (DrawImage.java:1026)
+  at sun.java2d.pipe.ValidatePipe.copyImage(Lsun/java2d/SunGraphics2D;Ljava/awt/Image;IIIIIILjava/awt/Color;Ljava/awt/image/ImageObserver;)Z (ValidatePipe.java:196)
+  at sun.java2d.SunGraphics2D.copyImage(Ljava/awt/Image;IIIIIILjava/awt/Color;Ljava/awt/image/ImageObserver;)Z (SunGraphics2D.java:3080)
+  at sun.java2d.SunGraphics2D.drawImage(Ljava/awt/Image;IIIILjava/awt/Color;Ljava/awt/image/ImageObserver;)Z (SunGraphics2D.java:3121)
+  at sun.java2d.SunGraphics2D.drawImage(Ljava/awt/Image;IIIILjava/awt/image/ImageObserver;)Z (SunGraphics2D.java:3065)
+  at Display.render()V (Display.java:123)
+  at Display.run()V (Display.java:86)
+  at java.lang.Thread.run()V (Thread.java:745)
+
+  locals:
+    objectId=0xf2a9a360, line=2
+    objectId=0xf378d060, line=2
+    objectId=0xf67c9118, line=2
+    objectId=0xf2f75378, line=2
+    objectId=0xf2f76008, line=2
+    objectId=0xf378d060, line=6
+    objectId=0xf67c9118, line=6
+    objectId=0xf378d060, line=7
+    objectId=0xf67c9118, line=7
+    objectId=0xf378d060, line=8
+    objectId=0xf67c9118, line=8
+    objectId=0xf67c8998, line=9
+    objectId=0xf2f74808, line=9
+    objectId=0xf378d060, line=9
+    objectId=0xf67c8998, line=10
+    objectId=0xf2ca1740, line=11
+
+Thread 0xf2c9da48
+  at sun.misc.Unsafe.park(ZJ)V (Native Method)
+  at java.util.concurrent.locks.LockSupport.park(Ljava/lang/Object;)V (LockSupport.java:186)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await()V (AbstractQueuedSynchronizer.java:2043)
+  at java.awt.EventQueue.getNextEvent()Ljava/awt/AWTEvent; (EventQueue.java:548)
+  at java.awt.EventDispatchThread.pumpOneEventForFilters(I)V (EventDispatchThread.java:211)
+  at java.awt.EventDispatchThread.pumpEventsForFilter(ILjava/awt/Conditional;Ljava/awt/EventFilter;)V (EventDispatchThread.java:161)
+  at java.awt.EventDispatchThread.pumpEventsForHierarchy(ILjava/awt/Conditional;Ljava/awt/Component;)V (EventDispatchThread.java:150)
+  at java.awt.EventDispatchThread.pumpEvents(ILjava/awt/Conditional;)V (EventDispatchThread.java:146)
+  at java.awt.EventDispatchThread.pumpEvents(Ljava/awt/Conditional;)V (EventDispatchThread.java:138)
+  at java.awt.EventDispatchThread.run()V (EventDispatchThread.java:91)
+
+  locals:
+    objectId=0xf683c6c8, line=1
+    objectId=0xf2c9da48, line=1
+    objectId=0xf683c6c8, line=2
+    objectId=0xf2ce02c0, line=2
+    objectId=0xf683c600, line=3
+    objectId=0xf2c9da48, line=4
+    objectId=0xf683c600, line=4
+    objectId=0xf2c9da48, line=5
+    objectId=0xf2cbb8d0, line=5
+    objectId=0xf2cbb990, line=5
+    objectId=0xf2c9da48, line=6
+    objectId=0xf2cbb8d0, line=6
+    objectId=0xf2c9da48, line=7
+    objectId=0xf2cbb8d0, line=7
+    objectId=0xf2c9da48, line=8
+    objectId=0xf2cbb8d0, line=8
+    objectId=0xf2c9da48, line=9
+
+Thread 0xf2c912a8
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:503)
+  at sun.awt.AWTAutoShutdown.run()V (AWTAutoShutdown.java:296)
+  at java.lang.Thread.run()V (Thread.java:745)
+
+  locals:
+    objectId=0xf2c910a8, line=1
+    objectId=0xf2c91080, line=2
+    objectId=0xf2c912a8, line=2
+    objectId=0xf2c910a8, line=2
+    objectId=0xf2c912a8, line=3
+
+Thread 0xf2ac4de8
+  at sun.misc.Unsafe.park(ZJ)V (Native Method)
+  at java.util.concurrent.locks.LockSupport.park(Ljava/lang/Object;)V (LockSupport.java:186)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt()Z (AbstractQueuedSynchronizer.java:834)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(Ljava/util/concurrent/locks/AbstractQueuedSynchronizer$Node;I)Z (AbstractQueuedSynchronizer.java:867)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(I)V (AbstractQueuedSynchronizer.java:1197)
+  at java.util.concurrent.locks.ReentrantLock$NonfairSync.lock()V (ReentrantLock.java:214)
+  at java.util.concurrent.locks.ReentrantLock.lock()V (ReentrantLock.java:290)
+  at sun.awt.SunToolkit.awtLock()V (SunToolkit.java:245)
+  at sun.awt.X11.XToolkit.waitForEvents(J)V (Native Method)
+  at sun.awt.X11.XToolkit.run(Z)V (XToolkit.java:541)
+  at sun.awt.X11.XToolkit.run()V (XToolkit.java:505)
+  at java.lang.Thread.run()V (Thread.java:745)
+
+  locals:
+    objectId=0xf2ac4de8, line=1
+    objectId=0xf6841c10, line=3
+    objectId=0xf2bb0e90, line=3
+    objectId=0xf2ab9ad0, line=9
+    objectId=0xf2ad3180, line=9
+    objectId=0xf2ab9ad0, line=10
+    objectId=0xf2ac4de8, line=11
+
+Thread 0xf67c81f0
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:135)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:151)
+  at sun.java2d.Disposer.run()V (Disposer.java:145)
+  at java.lang.Thread.run()V (Thread.java:745)
+
+  locals:
+    objectId=0xf67c8268, line=1
+    objectId=0xf67c8258, line=1
+    objectId=0xf67c8268, line=2
+    objectId=0xf67c8288, line=3
+    objectId=0xf67c81f0, line=4
+
+Thread 0xf67c83d0
+
+  locals:
+
+Thread 0xf67c8438
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:135)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:151)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0xf67806f0, line=1
+    objectId=0xf6780710, line=1
+    objectId=0xf67806f0, line=2
+    objectId=0xf67c8438, line=3
+    objectId=0xf67b20b0, line=3
+
+Thread 0xf67c84a8
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:503)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:133)
+
+  locals:
+    objectId=0xf6780408, line=1
+    objectId=0xf67c84a8, line=2
+    objectId=0xf6780408, line=2
+
