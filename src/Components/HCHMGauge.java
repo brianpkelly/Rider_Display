@@ -41,7 +41,7 @@ public class HCHMGauge implements Component {
 	@Override
 	public void update() {
 		
-		//value = (int) this.cancorder.getValue(variableName);
+		this.value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
 		this.value %= 129;
 	} 

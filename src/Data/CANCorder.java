@@ -36,11 +36,11 @@ public class CANCorder {
 	}
 	
 	public void close() {
-		/*try {
+		try {
 			this.connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
@@ -50,7 +50,7 @@ public class CANCorder {
 		
 		try {
 			if (!this.connection.isClosed()) {
-				String query = "SELECT ";
+				String query = 	"SELECT Value FROM CANTime ORDER  BY Time DESC LIMIT 1;";
 				ResultSet results = this.connection.createStatement().executeQuery(query);
 				if (results.next()) {
 					value = Double.parseDouble(results.getString(1));

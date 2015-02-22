@@ -49,9 +49,9 @@ public class Display extends Canvas implements Runnable {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
+		this.cancorder = new CANCorder();
 		this.layout = new GridLayout1(width, height, pixels, cancorder);
 		this.window = new JFrame();
-		this.cancorder = new CANCorder();
 	}
 	
 	// Starts the Display thread.
