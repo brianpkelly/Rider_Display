@@ -27,12 +27,12 @@ public class CANCorder {
 
 	
 	public CANCorder() {
-		/*try {
+		try {
 			Class.forName(DB_DRIVER);
 			this.connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 	
 	public void close() {
@@ -45,9 +45,21 @@ public class CANCorder {
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
 	public double getValue(String variableName) {
-		String query = "";
 		
 		double value = 0;
+		
+		try {
+			if (!this.connection.isClosed()) {
+				String query = "SELECT ";
+				ResultSet results = this.connection.createStatement().executeQuery(query);
+				if (results.next()) {
+					value = Double.parseDouble(results.getString(1));
+	            }
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return value;
 	}
 }

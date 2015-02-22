@@ -25,7 +25,7 @@ public class HCHMGauge implements Component {
 	public SpriteSheet spritesheet;
 	private CANCorder cancorder;
 	
-	public HCHMGauge(int layoutWidth, int width, int xPosition, int yPosition, String variableName, int[] pixels) {
+	public HCHMGauge(int layoutWidth, int width, int xPosition, int yPosition, String variableName, int[] pixels, CANCorder cancorder) {
 		
 		this.value = 0;
 		this.variableName = variableName;
@@ -35,7 +35,7 @@ public class HCHMGauge implements Component {
 		this.layoutWidth = layoutWidth;
 		this.pixels = pixels;
 		this.spritesheet = new SpriteSheet("/spritesheets/hchm_gauge.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
-		this.cancorder = new CANCorder();
+		this.cancorder = cancorder;
 	}
 
 	@Override

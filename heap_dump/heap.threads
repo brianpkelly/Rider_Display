@@ -1,12 +1,12 @@
-Thread 0xf37bd280
+Thread 0xf3660c58
 
   locals:
 
-Thread 0xf2e17b00
+Thread 0xf2e17ad8
 
   locals:
 
-Thread 0xf2ca1740
+Thread 0xf2ca1640
   at sun.java2d.loops.Blit.Blit(Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;Ljava/awt/Composite;Lsun/java2d/pipe/Region;IIIIII)V (Native Method)
   at sun.java2d.pipe.DrawImage.blitSurfaceData(Lsun/java2d/SunGraphics2D;Lsun/java2d/pipe/Region;Lsun/java2d/SurfaceData;Lsun/java2d/SurfaceData;Lsun/java2d/loops/SurfaceType;Lsun/java2d/loops/SurfaceType;IIIIIILjava/awt/Color;)V (DrawImage.java:955)
   at sun.java2d.pipe.DrawImage.renderImageCopy(Lsun/java2d/SunGraphics2D;Ljava/awt/Image;Ljava/awt/Color;IIIIII)Z (DrawImage.java:576)
@@ -22,23 +22,23 @@ Thread 0xf2ca1740
 
   locals:
     objectId=0xf2a9a360, line=2
-    objectId=0xf378d060, line=2
-    objectId=0xf67c9118, line=2
-    objectId=0xf2f75378, line=2
-    objectId=0xf2f76008, line=2
-    objectId=0xf378d060, line=6
-    objectId=0xf67c9118, line=6
-    objectId=0xf378d060, line=7
-    objectId=0xf67c9118, line=7
-    objectId=0xf378d060, line=8
-    objectId=0xf67c9118, line=8
-    objectId=0xf67c8998, line=9
-    objectId=0xf2f74808, line=9
-    objectId=0xf378d060, line=9
-    objectId=0xf67c8998, line=10
-    objectId=0xf2ca1740, line=11
+    objectId=0xf3b60468, line=2
+    objectId=0xf67fb478, line=2
+    objectId=0xf2f75d00, line=2
+    objectId=0xf2f766f8, line=2
+    objectId=0xf3b60468, line=6
+    objectId=0xf67fb478, line=6
+    objectId=0xf3b60468, line=7
+    objectId=0xf67fb478, line=7
+    objectId=0xf3b60468, line=8
+    objectId=0xf67fb478, line=8
+    objectId=0xf67fb2d8, line=9
+    objectId=0xf2f747e0, line=9
+    objectId=0xf3b60468, line=9
+    objectId=0xf67fb2d8, line=10
+    objectId=0xf2ca1640, line=11
 
-Thread 0xf2c9da48
+Thread 0xf2c9da78
   at sun.misc.Unsafe.park(ZJ)V (Native Method)
   at java.util.concurrent.locks.LockSupport.park(Ljava/lang/Object;)V (LockSupport.java:186)
   at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await()V (AbstractQueuedSynchronizer.java:2043)
@@ -51,36 +51,36 @@ Thread 0xf2c9da48
   at java.awt.EventDispatchThread.run()V (EventDispatchThread.java:91)
 
   locals:
-    objectId=0xf683c6c8, line=1
-    objectId=0xf2c9da48, line=1
-    objectId=0xf683c6c8, line=2
-    objectId=0xf2ce02c0, line=2
-    objectId=0xf683c600, line=3
-    objectId=0xf2c9da48, line=4
-    objectId=0xf683c600, line=4
-    objectId=0xf2c9da48, line=5
-    objectId=0xf2cbb8d0, line=5
-    objectId=0xf2cbb990, line=5
-    objectId=0xf2c9da48, line=6
-    objectId=0xf2cbb8d0, line=6
-    objectId=0xf2c9da48, line=7
-    objectId=0xf2cbb8d0, line=7
-    objectId=0xf2c9da48, line=8
-    objectId=0xf2cbb8d0, line=8
-    objectId=0xf2c9da48, line=9
+    objectId=0xf67d3b10, line=1
+    objectId=0xf2c9da78, line=1
+    objectId=0xf67d3b10, line=2
+    objectId=0xf2cd8f38, line=2
+    objectId=0xf67d3a48, line=3
+    objectId=0xf2c9da78, line=4
+    objectId=0xf67d3a48, line=4
+    objectId=0xf2c9da78, line=5
+    objectId=0xf2cbb8a8, line=5
+    objectId=0xf2cbb968, line=5
+    objectId=0xf2c9da78, line=6
+    objectId=0xf2cbb8a8, line=6
+    objectId=0xf2c9da78, line=7
+    objectId=0xf2cbb8a8, line=7
+    objectId=0xf2c9da78, line=8
+    objectId=0xf2cbb8a8, line=8
+    objectId=0xf2c9da78, line=9
 
-Thread 0xf2c912a8
+Thread 0xf2c912c8
   at java.lang.Object.wait(J)V (Native Method)
   at java.lang.Object.wait()V (Object.java:503)
   at sun.awt.AWTAutoShutdown.run()V (AWTAutoShutdown.java:296)
   at java.lang.Thread.run()V (Thread.java:745)
 
   locals:
-    objectId=0xf2c910a8, line=1
-    objectId=0xf2c91080, line=2
-    objectId=0xf2c912a8, line=2
-    objectId=0xf2c910a8, line=2
-    objectId=0xf2c912a8, line=3
+    objectId=0xf2c910c8, line=1
+    objectId=0xf2c910a0, line=2
+    objectId=0xf2c912c8, line=2
+    objectId=0xf2c910c8, line=2
+    objectId=0xf2c912c8, line=3
 
 Thread 0xf2ac4de8
   at sun.misc.Unsafe.park(ZJ)V (Native Method)
@@ -98,14 +98,14 @@ Thread 0xf2ac4de8
 
   locals:
     objectId=0xf2ac4de8, line=1
-    objectId=0xf6841c10, line=3
-    objectId=0xf2bb0e90, line=3
+    objectId=0xf67da6c0, line=3
+    objectId=0xf2bc1d68, line=3
     objectId=0xf2ab9ad0, line=9
     objectId=0xf2ad3180, line=9
     objectId=0xf2ab9ad0, line=10
     objectId=0xf2ac4de8, line=11
 
-Thread 0xf67c81f0
+Thread 0xf67d3ba8
   at java.lang.Object.wait(J)V (Native Method)
   at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:135)
   at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:151)
@@ -113,17 +113,17 @@ Thread 0xf67c81f0
   at java.lang.Thread.run()V (Thread.java:745)
 
   locals:
-    objectId=0xf67c8268, line=1
-    objectId=0xf67c8258, line=1
-    objectId=0xf67c8268, line=2
-    objectId=0xf67c8288, line=3
-    objectId=0xf67c81f0, line=4
+    objectId=0xf67f7c08, line=1
+    objectId=0xf67f7c28, line=1
+    objectId=0xf67f7c08, line=2
+    objectId=0xf67d3c40, line=3
+    objectId=0xf67d3ba8, line=4
 
-Thread 0xf67c83d0
+Thread 0xf67d3c80
 
   locals:
 
-Thread 0xf67c8438
+Thread 0xf67d3d50
   at java.lang.Object.wait(J)V (Native Method)
   at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:135)
   at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:151)
@@ -133,16 +133,16 @@ Thread 0xf67c8438
     objectId=0xf67806f0, line=1
     objectId=0xf6780710, line=1
     objectId=0xf67806f0, line=2
-    objectId=0xf67c8438, line=3
+    objectId=0xf67d3d50, line=3
     objectId=0xf67b20b0, line=3
 
-Thread 0xf67c84a8
+Thread 0xf67d3ea0
   at java.lang.Object.wait(J)V (Native Method)
   at java.lang.Object.wait()V (Object.java:503)
   at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:133)
 
   locals:
     objectId=0xf6780408, line=1
-    objectId=0xf67c84a8, line=2
+    objectId=0xf67d3ea0, line=2
     objectId=0xf6780408, line=2
 

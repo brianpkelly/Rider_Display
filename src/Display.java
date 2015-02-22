@@ -41,6 +41,7 @@ public class Display extends Canvas implements Runnable {
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	private GridLayout1 layout;
+	private CANCorder cancorder;
 	
 	// Constants for connecting to the database
 	
@@ -48,13 +49,14 @@ public class Display extends Canvas implements Runnable {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		this.layout = new GridLayout1(width, height, pixels);
+		this.layout = new GridLayout1(width, height, pixels, cancorder);
 		this.window = new JFrame();
+		this.cancorder = new CANCorder();
 	}
 	
 	// Starts the Display thread.
 	public synchronized void start() {
-		
+
 		this.isRunning = true;
 		this.thread = new Thread(this);
 		this.thread.start();
@@ -64,7 +66,7 @@ public class Display extends Canvas implements Runnable {
 	public synchronized void stop() {
 		
 		this.isRunning = false;
-		
+		this.cancorder.close();
 		try {
 			this.thread.join();
 		} catch (InterruptedException e) {
