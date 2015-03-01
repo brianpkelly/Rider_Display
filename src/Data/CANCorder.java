@@ -50,7 +50,7 @@ public class CANCorder {
 		
 		try {
 			if (!this.connection.isClosed()) {
-				String query = 	"SELECT Value FROM CANTime ORDER  BY Time DESC LIMIT 1;";
+				String query = 	"SELECT Value FROM CANTime  WHERE CAN_Message = \"" + variableName + "\" ORDER  BY Time DESC LIMIT 1;";
 				ResultSet results = this.connection.createStatement().executeQuery(query);
 				if (results.next()) {
 					value = Double.parseDouble(results.getString(1));
