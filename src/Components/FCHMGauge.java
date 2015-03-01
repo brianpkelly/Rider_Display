@@ -1,12 +1,13 @@
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
- * Description: This is the a full circle heat map gauge generated from a sprite sheet.
+ * Description: This is a full circle heat map gauge generated from a sprite sheet.
  * 
  */
 
 package Components;
 
+import Data.CANCorder;
 import Graphics.SpriteSheet;
 
 public class FCHMGauge implements Component {
@@ -16,37 +17,44 @@ public class FCHMGauge implements Component {
 	private int width;
 	private int xPosition;
 	private int yPosition;
+	private int layoutWidth;
+	private int[] pixels;
 	public final int SPRITE_SIZE = 256;
+	public final int SPRITE_NUMBER = 129;
 	public SpriteSheet spritesheet;
+	private CANCorder cancorder;
 	
-	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
+	public FCHMGauge(int layoutWidth, int width, int xPosition, int yPosition, String variableName, int[] pixels) {
 		
 		this.value = 0;
 		this.variableName = variableName;
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_long_256_2.png", this.SPRITE_SIZE);
+		this.pixels = pixels;
+		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
+		this.cancorder = new CANCorder();
+		this.layoutWidth = layoutWidth;
 	}
 
 	@Override
 	public void update() {
 		
+		//this.value = (int) this.cancorder.getValue(variableName);
 		this.value += 1;
-		this.value = this.value % 127;
+		this.value %= 129;
 	} 
 
 	@Override
-	public void render(int[][] pixels) {
+	public void render() {
 
 		int index = this.value * this.SPRITE_SIZE;
+		int pixel;
 		for (int y = this.yPosition; y < this.width + this.yPosition; y++) {
 			for (int x = this.xPosition; x < this.width + this.xPosition; x++) {
 				
-				int pixel = this.spritesheet.pixels[(y * this.SPRITE_SIZE * 129) + x + index];
-				if (pixel != -16777216) {
-					pixels[y][x] = pixel;
-				}
+				pixel = this.spritesheet.pixels[((y - this.yPosition) * this.SPRITE_SIZE * this.SPRITE_NUMBER) + (x - this.xPosition) + index];
+				pixels[y * this.layoutWidth + x] = pixel;
 			}
 		}
 	}

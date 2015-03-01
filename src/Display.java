@@ -1,7 +1,7 @@
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
- * Description: This is the overarching class and executable. Most of the code is administrative.
+ * Description: This is the over-arching class and executable. Most of the code is administrative.
  * 
  */
 
@@ -14,10 +14,13 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import Data.CANCorder;
 import Layouts.GridLayout1;
-import Layouts.Layout;
 
 public class Display extends Canvas implements Runnable {
+	
+	// Keep the compiler happy
+	static final long serialVersionUID = 42L;
 	
 	public static int width = 1024;
 	public static int height = 600;
@@ -39,11 +42,13 @@ public class Display extends Canvas implements Runnable {
 	
 	private GridLayout1 layout;
 	
+	// Constants for connecting to the database
+	
 	public Display() {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		this.layout = new GridLayout1(width, height);
+		this.layout = new GridLayout1(width, height, pixels);
 		this.window = new JFrame();
 	}
 	
@@ -71,23 +76,20 @@ public class Display extends Canvas implements Runnable {
 	@Override
 	public void run() {
 		
-		// Variable to control the refresh rate for rendering. Might be unnecessary.
-		long timeStart = System.nanoTime();
-		double timeInterval = 0;
+		// Counters to keep an eye on performance
+		int fpsCount = 0;
+		long timeCount = System.currentTimeMillis();
 		
 		while (this.isRunning) {
 			
-			long timeNow = System.nanoTime();
-			timeInterval += (timeNow - timeStart) / (1000000000.0 / 60.0);
-			timeStart = timeNow;
-			
-			while (timeInterval >= 1) {
-				
-				this.update();
-				timeInterval--;
-			}
-			
+			this.update();
 			this.render();
+			fpsCount++;
+			if (System.currentTimeMillis() - timeCount >= 1000) {
+				timeCount += 1000;
+				this.window.setTitle("Rider Display | FPS: " + fpsCount);
+				fpsCount = 0;
+			}
 		}
 		
 		this.stop();	
@@ -113,14 +115,8 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		// Get the new set of pixels to be rendered
-		this.layout.clear();
+		//this.layout.clear();
 		this.layout.render();
-		int[] layoutPixels = this.layout.pixels();
-		
-		for (int i = 0; i < this.pixels.length; i++) {
-			
-			this.pixels[i] = layoutPixels[i];
-		}
 		
 		// More rendering details. Turns the pixel array to an image and actually draws it.
 		Graphics graphics = buffStrat.getDrawGraphics();
@@ -135,13 +131,14 @@ public class Display extends Canvas implements Runnable {
 		
 		// Set a variety of JFrame properties for the Display
 		display.window.setResizable(false);
-		display.window.setTitle("Rider Interface");
+		display.window.setTitle("Rider Display");
 		display.window.add(display);
 		display.window.pack();
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		display.window.setLocationRelativeTo(null);
 		display.window.setVisible(true);
-
+		
+		// Start the display
 		display.start();
 	}	
 }

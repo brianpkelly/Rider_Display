@@ -7,8 +7,12 @@
 
 package Layouts;
 
+import Components.BarGraph1;
 import Components.Component;
 import Components.FCHMGauge;
+import Components.HCHMGauge;
+import Data.CANCorder;
+import Graphics.SpriteSheet;
 
 import java.awt.image.BufferedImage;
 import java.io.EOFException;
@@ -19,30 +23,24 @@ import javax.imageio.ImageIO;
 
 public class GridLayout1 implements Layout {
 	
-	public int[][] pixels;
+	public int[] pixels;
 	private int[] bgPixels;
 	private Component component1;
 	private Component component2;
 	private Component component3;
+	private Component component4;
 	private int width;
 	private int height;
 	
-	public GridLayout1(int width, int height) {
+	public GridLayout1(int width, int height, int[] pixels) {
 		
 		this.width = width;
 		this.height = height;
-		this.pixels = new int[height][width];
+		this.pixels = pixels;
 		this.bgPixels = new int[height * width];
 		
-		File bgImage = null;
 		try {
-			bgImage = new File("res/background.png");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			BufferedImage image = ImageIO.read(bgImage);
+			BufferedImage image = ImageIO.read(GridLayout1.class.getResource("/background.png"));
 			int iwidth = image.getWidth();
 			int iheight = image.getHeight();
 			image.getRGB(0, 0, iwidth, iheight, this.bgPixels, 0, iwidth);
@@ -50,11 +48,14 @@ public class GridLayout1 implements Layout {
 			e.printStackTrace();
 		}
 		
-		this.component1 = new FCHMGauge(width / 4, 0, 0, "TirePressure");
-		//this.component1 = new BarGraph1(width / 2, height, 0, 0, "TirePressure");
-		//this.component1 = new Gauge1(width / 2, 0, 0, "TirePressure");
-		this.component2 = new FCHMGauge(width / 4, width / 2, 0, "Battery Voltage");
-		//this.component3 = new Gauge1(width / 4, (width / 2) + (width / 4), 0, "RPM");
+		/*this.component1 = new BarGraph1(this.width / 4 - 10, this.height / 2, 0, 0, CANCorder.RPM);
+		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
+		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
+		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.RPM, this.pixels);
+		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE, this.pixels);
+		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE, this.pixels);
+		this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels);
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class GridLayout1 implements Layout {
 		
 		for (int y = 0; y < this.height; y++) {
 			for (int x = 0; x < this.width; x++) {
-				this.pixels[y][x] = this.bgPixels[y * this.width + x];
+				this.pixels[y * this.width + x] = this.bgPixels[y * this.width + x];
 			}
 		}
 	}
@@ -70,15 +71,7 @@ public class GridLayout1 implements Layout {
 	@Override
 	public int[] pixels() {
 		
-		int[] a = new int[this.height * this.width];
-		
-		for (int y = 0; y < this.height; y++) {
-			for (int x = 0; x < this.width; x++) {
-				a[(y * this.width) + x] =  this.pixels[y][x];
-			}
-		}
-		
-		return a;
+		return this.pixels;
 	}
 
 	@Override
@@ -86,15 +79,17 @@ public class GridLayout1 implements Layout {
 		
 		this.component1.update();
 		this.component2.update();
-		//this.component3.update();
+		this.component3.update();
+		this.component4.update();
 	}
 
 	@Override
 	public void render() {
 		
-		this.component1.render(this.pixels);
-		this.component2.render(this.pixels);
-		//this.component3.render(this.pixels);
+		this.component1.render();
+		this.component2.render();
+		this.component3.render();
+		this.component4.render();
 	}
 
 }

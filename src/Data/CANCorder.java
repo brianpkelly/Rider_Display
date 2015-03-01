@@ -1,4 +1,8 @@
 package Data;
+
+
+import java.sql.*;
+
 /*
  * RW3 Rider Interface Display
  * Author: Brian Kelly
@@ -7,11 +11,43 @@ package Data;
  */
 
 public class CANCorder {
+	// Constants for connecting to the database
+	private final static String DB_URL = "jdbc:mysql://localhost:3306/";
+	private final static String DB_NAME = "CANCorder";
+	private final static String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private final static String DB_USER_NAME = "cancorder"; 
+	private final static String DB_PASSWORD = "";
+	
+	// String constants for CAN variable names, used in the Layout objects
+	public final static String RPM = "rpm";
+	public final static String TIRE_PRESSURE = "tire_pressure";
+	public final static String BATTERY_VOLTAGE = "batt_volt";
+	
+	private Connection connection;
+
+	
+	public CANCorder() {
+		/*try {
+			Class.forName(DB_DRIVER);
+			this.connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
+	}
+	
+	public void close() {
+		/*try {
+			this.connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}*/
+	}
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
-	public static double getValue(String variableName, double lastValue) {
+	public double getValue(String variableName) {
+		String query = "";
 		
-		double value = lastValue + 1;
+		double value = 0;
 		return value;
 	}
 }
