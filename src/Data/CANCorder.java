@@ -16,7 +16,7 @@ public class CANCorder {
 	private final static String DB_NAME = "CANCorder";
 	private final static String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private final static String DB_USER_NAME = "cancorder"; 
-	private final static String DB_PASSWORD = "";
+	private final static String DB_PASSWORD = "current";
 	
 	// String constants for CAN variable names, used in the Layout objects
 	public final static String RPM = "rpm";

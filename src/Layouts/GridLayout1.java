@@ -48,6 +48,8 @@ public class GridLayout1 implements Layout {
 			e.printStackTrace();
 		}
 		
+		this.clear();
+		
 		/*this.component1 = new BarGraph1(this.width / 4 - 10, this.height / 2, 0, 0, CANCorder.RPM);
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
@@ -55,7 +57,7 @@ public class GridLayout1 implements Layout {
 		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, "FrontTireTemp", this.pixels, cancorder);
 		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.BATTERY_VOLTAGE, this.pixels, cancorder);
 		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.TIRE_PRESSURE, this.pixels, cancorder);
-		this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels, cancorder);
+		//this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels, cancorder);
 	}
 
 	@Override
@@ -63,7 +65,8 @@ public class GridLayout1 implements Layout {
 		
 		for (int y = 0; y < this.height; y++) {
 			for (int x = 0; x < this.width; x++) {
-				this.pixels[y * this.width + x] = this.bgPixels[y * this.width + x];
+				//this.pixels[y * this.width + x] = this.bgPixels[y * this.width + x];
+				this.pixels[y * this.width + x] = 0xBFBFBF;
 			}
 		}
 	}
@@ -80,7 +83,7 @@ public class GridLayout1 implements Layout {
 		this.component1.update();
 		this.component2.update();
 		this.component3.update();
-		this.component4.update();
+		//this.component4.update();
 	}
 
 	@Override
@@ -89,7 +92,7 @@ public class GridLayout1 implements Layout {
 		this.component1.render();
 		this.component2.render();
 		this.component3.render();
-		this.component4.render();
+		//this.component4.render();
 	}
 
 }

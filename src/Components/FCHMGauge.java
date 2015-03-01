@@ -32,7 +32,7 @@ public class FCHMGauge implements Component {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.pixels = pixels;
-		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
+		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge_min.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
 		this.cancorder = cancorder;
 		this.layoutWidth = layoutWidth;
 	}
@@ -41,7 +41,7 @@ public class FCHMGauge implements Component {
 	public void update() {
 		
 		this.value = (int) this.cancorder.getValue(variableName);
-		this.value += 1;
+		//this.value += 1;
 		this.value %= 129;
 	} 
 
