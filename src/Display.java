@@ -66,7 +66,6 @@ public class Display extends Canvas implements Runnable {
 	public synchronized void stop() {
 		
 		this.isRunning = false;
-		this.cancorder.close();
 		try {
 			this.thread.join();
 		} catch (InterruptedException e) {

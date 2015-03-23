@@ -54,7 +54,7 @@ public class GridLayout1 implements Layout {
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
 		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
-		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, "FrontTireTemp", this.pixels, cancorder);
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.FRONT_TIRE_TEMPERATURE, this.pixels, cancorder);
 		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, "BackTireTemp", this.pixels, cancorder);
 		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, "Bananas", this.pixels, cancorder);
 		//this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels, cancorder);

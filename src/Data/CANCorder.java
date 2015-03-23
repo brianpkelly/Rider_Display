@@ -1,7 +1,10 @@
 package Data;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.Scanner;
 
 /*
  * RW3 Rider Interface Display
@@ -11,53 +14,32 @@ import java.sql.*;
  */
 
 public class CANCorder {
-	// Constants for connecting to the database
-	private final static String DB_URL = "jdbc:mysql://localhost:3306/";
-	private final static String DB_NAME = "CANCorder";
-	private final static String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private final static String DB_USER_NAME = "cancorder"; 
-	private final static String DB_PASSWORD = "current";
+	
+	// Directory where files are located
+	private final static String DIR = "/home/cancorder/data/";
 	
 	// String constants for CAN variable names, used in the Layout objects
 	public final static String RPM = "rpm";
 	public final static String TIRE_PRESSURE = "tire_pressure";
 	public final static String BATTERY_VOLTAGE = "batt_volt";
-	
-	private Connection connection;
-
-	
-	public CANCorder() {
-		try {
-			Class.forName(DB_DRIVER);
-			this.connection = DriverManager.getConnection(DB_URL + DB_NAME, DB_USER_NAME, DB_PASSWORD);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void close() {
-		try {
-			this.connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+	public final static String FRONT_TIRE_TEMPERATURE = "FrontTireTemp";
 
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
 	public double getValue(String variableName) {
 		
+		File dataFile = new File(DIR + variableName);
+		Scanner scan;
+		double time = 0;
 		double value = 0;
 		
 		try {
-			if (!this.connection.isClosed()) {
-				String query = 	"SELECT Value FROM CANTime  WHERE CAN_Message = \"" + variableName + "\" ORDER  BY Time DESC LIMIT 1;";
-				ResultSet results = this.connection.createStatement().executeQuery(query);
-				if (results.next()) {
-					value = Double.parseDouble(results.getString(1));
-	            }
-			}
-		} catch (SQLException e) {
+			scan = new Scanner(dataFile);
+			time = scan.nextDouble();
+			value = scan.nextDouble();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return 0;
 		}
 		
 		return value;
