@@ -7,13 +7,12 @@
 
 package Layouts;
 
-import Components.BarGraph1;
 import Components.Component;
 import Components.FCHMGauge;
-import Components.HCHMGauge;
 import Data.CANCorder;
 import Graphics.SpriteSheet;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.File;
@@ -23,7 +22,6 @@ import javax.imageio.ImageIO;
 
 public class GridLayout1 implements Layout {
 	
-	public int[] pixels;
 	private int[] bgPixels;
 	private Component component1;
 	private Component component2;
@@ -32,11 +30,10 @@ public class GridLayout1 implements Layout {
 	private int width;
 	private int height;
 	
-	public GridLayout1(int width, int height, int[] pixels, CANCorder cancorder) {
+	public GridLayout1(int width, int height, CANCorder cancorder) {
 		
 		this.width = width;
 		this.height = height;
-		this.pixels = pixels;
 		this.bgPixels = new int[height * width];
 		
 		try {
@@ -54,27 +51,15 @@ public class GridLayout1 implements Layout {
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
 		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
-		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.FRONT_TIRE_TEMPERATURE, this.pixels, cancorder);
-		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.FRONT_TIRE_TEMPERATURE, this.pixels, cancorder);
-		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.FRONT_TIRE_TEMPERATURE, this.pixels, cancorder);
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
+		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
+		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
 		//this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels, cancorder);
 	}
 
 	@Override
 	public void clear() {
 		
-		for (int y = 0; y < this.height; y++) {
-			for (int x = 0; x < this.width; x++) {
-				//this.pixels[y * this.width + x] = this.bgPixels[y * this.width + x];
-				this.pixels[y * this.width + x] = 0xBFBFBF;
-			}
-		}
-	}
-	
-	@Override
-	public int[] pixels() {
-		
-		return this.pixels;
 	}
 
 	@Override
@@ -87,11 +72,11 @@ public class GridLayout1 implements Layout {
 	}
 
 	@Override
-	public void render() {
+	public void render(Graphics graphics) {
 		
-		this.component1.render();
-		this.component2.render();
-		this.component3.render();
+		this.component1.render(graphics);
+		this.component2.render(graphics);
+		this.component3.render(graphics);
 		//this.component4.render();
 	}
 
