@@ -80,7 +80,7 @@ public class Display extends Canvas implements Runnable {
 		
 		while (this.isRunning) {
 			
-			this.update();
+			//this.update();
 			this.render();
 			fpsCount++;
 			if (System.currentTimeMillis() - timeCount >= 1000) {
