@@ -7,10 +7,12 @@
 
 package Components;
 
+import java.awt.Graphics;
+
 public interface Component {
 	
 	public void update();
 	
-	public void render();
+	public void render(Graphics graphics);
 
 }

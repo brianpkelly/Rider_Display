@@ -6,6 +6,7 @@
  */
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -36,12 +37,7 @@ public class Display extends Canvas implements Runnable {
 	// The Display renders to a Canvas, which is contained in a JFrame. A JFrame is a window in whichever OS this application is running in.
 	private JFrame window;
 	
-	// Some details in how things get rendered.
-	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-	
 	private GridLayout1 layout;
-	private CANCorder cancorder;
 	
 	// Constants for connecting to the database
 	
@@ -49,8 +45,7 @@ public class Display extends Canvas implements Runnable {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		this.cancorder = new CANCorder();
-		this.layout = new GridLayout1(width, height, pixels, cancorder);
+		this.layout = new GridLayout1(width, height);
 		this.window = new JFrame();
 	}
 	
@@ -115,13 +110,11 @@ public class Display extends Canvas implements Runnable {
 			return;
 		}
 		
-		// Get the new set of pixels to be rendered
-		//this.layout.clear();
-		this.layout.render();
-		
 		// More rendering details. Turns the pixel array to an image and actually draws it.
 		Graphics graphics = buffStrat.getDrawGraphics();
-		graphics.drawImage(this.image, 0, 0, getWidth(), getHeight(), null);
+		this.layout.render(graphics);
+		//graphics.setColor(new Color(0xBFBFBF));
+		//graphics.drawImage(this.image, 0, 0, getWidth(), getHeight(), null);
 		graphics.dispose();
 		buffStrat.show();
 	}

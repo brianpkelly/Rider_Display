@@ -9,13 +9,13 @@
 
 package Layouts;
 
+import java.awt.Graphics;
+
 public interface Layout {
 	
 	public void clear();
 	
-	public int[] pixels();
-	
 	public void update();
 	
-	public void render();
+	public void render(Graphics graphics);
 }

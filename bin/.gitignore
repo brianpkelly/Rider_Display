@@ -1,4 +1,10 @@
-/Data/
+/background.png
+/spritesheets/
 /Components/
-/Layouts/
 /Graphics/
+/Layouts/
+<<<<<<< HEAD
+/Graphics/
+=======
+/Data/
+>>>>>>> arrayless

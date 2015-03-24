@@ -1,10 +1,11 @@
 package Data;
 
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.sql.*;
-import java.util.Scanner;
+import java.io.FileReader;
+import java.io.RandomAccessFile;
+
 
 /*
  * RW3 Rider Interface Display
@@ -23,23 +24,31 @@ public class CANCorder {
 	public final static String TIRE_PRESSURE = "tire_pressure";
 	public final static String BATTERY_VOLTAGE = "batt_volt";
 	public final static String FRONT_TIRE_TEMPERATURE = "FrontTireTemp";
-
+	private RandomAccessFile reader;
+	
+	public CANCorder(String variableName) {
+		try {
+			this.reader = new RandomAccessFile(new File(DIR + variableName), "r");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	// This method will get the value of the passed variable by querying the CANCorder database. Right now it just generates a value for demo purposes.
-	public double getValue(String variableName) {
+	public double getValue() {
 		
-		File dataFile = new File(DIR + variableName);
-		Scanner scan;
 		double time = 0;
 		double value = 0;
 		
 		try {
-			scan = new Scanner(dataFile);
-			time = scan.nextDouble();
-			value = scan.nextDouble();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			//System.out.println(reader.readLine());
+			//System.out.println(reader.readLine());
+			time = Double.parseDouble(reader.readLine());
+			value = Double.parseDouble(reader.readLine());
+			reader.seek(0);
+		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
 		}
 		
 		return value;
