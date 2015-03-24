@@ -30,7 +30,7 @@ public class GridLayout1 implements Layout {
 	private int width;
 	private int height;
 	
-	public GridLayout1(int width, int height, CANCorder cancorder) {
+	public GridLayout1(int width, int height) {
 		
 		this.width = width;
 		this.height = height;
@@ -51,9 +51,9 @@ public class GridLayout1 implements Layout {
 		this.component2 = new BarGraph1(this.width / 4 - 10, this.height / 2, this.width / 4, 0, CANCorder.RPM);
 		this.component3 = new BarGraph1(this.width / 4 - 10, this.height, this.width / 2, 0, CANCorder.RPM);
 		this.component4 = new BarGraph1(this.width / 4 - 10, this.height, (3 * this.width) / 4, 0, CANCorder.RPM);*/
-		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
-		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
-		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.FRONT_TIRE_TEMPERATURE, cancorder);
+		this.component1 = new FCHMGauge(this.width, this.width / 4, 0, 0, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component2 = new FCHMGauge(this.width, this.width / 4, this.width / 4, 0, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component3 = new FCHMGauge(this.width, this.width / 4, this.width / 2, 0, CANCorder.FRONT_TIRE_TEMPERATURE);
 		//this.component4 = new HCHMGauge(this.width, this.width / 4, (3 * this.width) / 4, this.width / 4, CANCorder.RPM, this.pixels, cancorder);
 	}
 

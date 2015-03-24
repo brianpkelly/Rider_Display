@@ -14,7 +14,6 @@ import Graphics.SpriteSheet;
 
 public class FCHMGauge implements Component {
 	
-	private String variableName;
 	private int value;
 	private int width;
 	private int xPosition;
@@ -25,22 +24,21 @@ public class FCHMGauge implements Component {
 	public SpriteSheet spritesheet;
 	private CANCorder cancorder;
 	
-	public FCHMGauge(int layoutWidth, int width, int xPosition, int yPosition, String variableName, CANCorder cancorder) {
+	public FCHMGauge(int layoutWidth, int width, int xPosition, int yPosition, String variableName) {
 		
 		this.value = 0;
-		this.variableName = variableName;
 		this.width = width;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge_min.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
-		this.cancorder = cancorder;
+		this.cancorder = new CANCorder(variableName);
 		this.layoutWidth = layoutWidth;
 	}
 
 	@Override
 	public void update() {
 		
-		this.value = (int) this.cancorder.getValue(variableName);
+		this.value = (int) this.cancorder.getValue();
 		//this.value += 1;
 		this.value %= 129;
 	} 

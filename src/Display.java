@@ -38,7 +38,6 @@ public class Display extends Canvas implements Runnable {
 	private JFrame window;
 	
 	private GridLayout1 layout;
-	private CANCorder cancorder;
 	
 	// Constants for connecting to the database
 	
@@ -46,8 +45,7 @@ public class Display extends Canvas implements Runnable {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension(width * scale, height * scale));
-		this.cancorder = new CANCorder();
-		this.layout = new GridLayout1(width, height, cancorder);
+		this.layout = new GridLayout1(width, height);
 		this.window = new JFrame();
 	}
 	
@@ -80,7 +78,7 @@ public class Display extends Canvas implements Runnable {
 		
 		while (this.isRunning) {
 			
-			//this.update();
+			this.update();
 			this.render();
 			fpsCount++;
 			if (System.currentTimeMillis() - timeCount >= 1000) {
