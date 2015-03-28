@@ -24,6 +24,11 @@ public class CANCorder {
 	public final static String TIRE_PRESSURE = "tire_pressure";
 	public final static String BATTERY_VOLTAGE = "batt_volt";
 	public final static String FRONT_TIRE_TEMPERATURE = "FrontTireTemp";
+	
+	// Integer constants to indicate errors with the data
+	public final static int ERROR_MISSING_DATA = -1;
+	public final static int  ERROR_OLD_DATA = -2;
+	
 	private RandomAccessFile reader;
 	
 	public CANCorder(String variableName) {
@@ -44,8 +49,16 @@ public class CANCorder {
 		try {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());
-			time = Double.parseDouble(reader.readLine());
-			value = Double.parseDouble(reader.readLine());
+			String line1 = reader.readLine();
+			String line2 = reader.readLine();
+			if (line1 == null || line2 == null) {
+				// Reader read in a partial file. This happens when the file is read while being written to and happens every once and a while
+				// Returns -1 when this happens to indicate that the display should not be updated
+				return CANCorder.ERROR_MISSING_DATA;
+			} else {
+				time = Double.parseDouble(line1);
+				value = Double.parseDouble(line2);
+			}
 			reader.seek(0);
 		} catch (Exception e) {
 			e.printStackTrace();

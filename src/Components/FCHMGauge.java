@@ -45,7 +45,18 @@ public class FCHMGauge implements Component {
 
 	@Override
 	public void render(Graphics graphics) {
-
-		graphics.drawImage(this.spritesheet.getSprite(this.value), this.xPosition, this.yPosition, null);
+		// The data read in from the CANCorder has to be analyzed to figure out how to render
+		switch (this.value) {
+			case CANCorder.ERROR_MISSING_DATA:
+				// The data is bad and nothing should be rendered
+				return;
+			case CANCorder.ERROR_OLD_DATA:
+				// The data has not been updated recently, a special sprite will likely rendered in this case
+				graphics.drawImage(this.spritesheet.getSprite(this.value), this.xPosition, this.yPosition, null);
+				break;
+			default:
+				// The data is standard and the component should be updated
+				graphics.drawImage(this.spritesheet.getSprite(this.value), this.xPosition, this.yPosition, null);
+		}
 	}
 }
