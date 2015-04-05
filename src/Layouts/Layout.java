@@ -13,7 +13,7 @@ import java.awt.Graphics;
 
 public interface Layout {
 	
-	public void clear();
+	public void clear(Graphics graphics);
 	
 	public void update();
 	

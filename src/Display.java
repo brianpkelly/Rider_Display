@@ -6,16 +6,15 @@
  */
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import Data.CANCorder;
 import Layouts.GridLayout1;
 
 public class Display extends Canvas implements Runnable {
@@ -36,10 +35,7 @@ public class Display extends Canvas implements Runnable {
 	
 	// The Display renders to a Canvas, which is contained in a JFrame. A JFrame is a window in whichever OS this application is running in.
 	private JFrame window;
-	
 	private GridLayout1 layout;
-	
-	// Constants for connecting to the database
 	
 	public Display() {
 		
@@ -104,13 +100,11 @@ public class Display extends Canvas implements Runnable {
 		
 		BufferStrategy buffStrat = getBufferStrategy();
 		
-		if (buffStrat == null) {
-			
-			createBufferStrategy(3);
+		if (buffStrat == null) {	
+			createBufferStrategy(1);
 			return;
 		}
 		
-		// More rendering details. Turns the pixel array to an image and actually draws it.
 		Graphics graphics = buffStrat.getDrawGraphics();
 		this.layout.render(graphics);
 		//graphics.setColor(new Color(0xBFBFBF));

@@ -49,16 +49,8 @@ public class CANCorder {
 		try {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());
-			String line1 = reader.readLine();
-			String line2 = reader.readLine();
-			if (line1 == null || line2 == null) {
-				// Reader read in a partial file. This happens when the file is read while being written to and happens every once and a while
-				// Returns -1 when this happens to indicate that the display should not be updated
-				return CANCorder.ERROR_MISSING_DATA;
-			} else {
-				time = Double.parseDouble(line1);
-				value = Double.parseDouble(line2);
-			}
+			time = reader.readDouble();
+			value = reader.readDouble();
 			reader.seek(0);
 		} catch (Exception e) {
 			e.printStackTrace();
