@@ -11,24 +11,21 @@ package Components;
 import Data.CANCorder;
 import Graphics.SpriteSheet;
 
-public class FCHMGauge extends RasterComponent {
+public class Lock extends RasterComponent {
 	
-	public final int SPRITE_SIZE = 256;
+	public final int SPRITE_SIZE = 64;
 	public final int SPRITE_NUMBER = 2;
 
-	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
+	public Lock(int xPosition, int yPosition) {
 		
 		this.currentValue = 0;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
+		this.spritesheet = new SpriteSheet("/spritesheets/lock.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
 		//this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_alpha.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
-		this.cancorder = new CANCorder(variableName);
-		//double[] minMax = this.cancorder.getMinMax();
-		//this.minValue = minMax[0];
-		//this.maxValue = minMax[1];
+		this.cancorder = new CANCorder(CANCorder.LOCK);
 		this.minValue = 0;
-		this.maxValue = 128;
+		this.maxValue = 1;
 	}
 
 }

@@ -8,6 +8,8 @@
 package Graphics;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 
 import javax.imageio.ImageIO;
 
@@ -32,6 +34,7 @@ public class SpriteSheet {
 		
 		try {
 			this.image = ImageIO.read(SpriteSheet.class.getResource(path));
+			//this.image = ImageIO.read(new FileInputStream(new File(this.path)));
 			int width = image.getWidth();
 			int height = image.getHeight();
 		} catch (Exception e) {

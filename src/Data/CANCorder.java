@@ -5,6 +5,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Scanner;
 
 
 /*
@@ -17,23 +20,31 @@ import java.io.RandomAccessFile;
 public class CANCorder {
 	
 	// Directory where files are located
-	private final static String DIR = "/home/cancorder/data/";
+	private final static String DIR = "/home/cancorder/";
 	
 	// String constants for CAN variable names, used in the Layout objects
 	public final static String RPM = "rpm";
 	public final static String TIRE_PRESSURE = "tire_pressure";
 	public final static String BATTERY_VOLTAGE = "batt_volt";
 	public final static String FRONT_TIRE_TEMPERATURE = "FrontTireTemp";
+	public final static String THROTTLE = "MotorCurrentSetpoint";
+	public final static String LOCK = "Locked";
+	
 	
 	// Integer constants to indicate errors with the data
 	public final static int ERROR_MISSING_DATA = -1;
 	public final static int  ERROR_OLD_DATA = -2;
 	
 	private RandomAccessFile reader;
+	private String variableName;
+	private byte[] bytes;
 	
 	public CANCorder(String variableName) {
+		
+		this.variableName = variableName;
+		this.bytes = new byte[8];
 		try {
-			this.reader = new RandomAccessFile(new File(DIR + variableName), "r");
+			this.reader = new RandomAccessFile(new File(DIR + "data/" + variableName), "r");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,13 +60,36 @@ public class CANCorder {
 		try {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());
-			time = reader.readDouble();
-			value = reader.readDouble();
 			reader.seek(0);
+			reader.read(bytes);
+			time = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
+			reader.read(bytes);
+			value = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
+			//System.out.println(value);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR_MISSING_DATA;
+		}
+		
+		return value;
+	}
+	
+	public double[] getMinMax() {
+		
+		double min = 0;
+		double max = 0;
+		
+		try {
+			//System.out.println(reader.readLine());
+			//System.out.println(reader.readLine());
+			Scanner s = new Scanner(new File(DIR + "meta/" + variableName));
+			min = s.nextDouble();
+			max = s.nextDouble();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return value;
+		double[] minMax = {min, max};
+		return minMax;
 	}
 }
