@@ -33,10 +33,10 @@ public class GridLayout1 implements Layout {
 		this.width = width;
 		this.height = height;
 		
-		this.component1 = new FCHMGauge(this.width / 4, this.width / 2 - 128, this.height / 2 - 128, CANCorder.FRONT_TIRE_TEMPERATURE);
-		//this.component2 = new FCHMGauge(this.width / 4, this.width / 4, 0, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component1 = new FCHMGauge(0, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component2 = new FCHMGauge(this.width / 4, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
 		//this.component2 = new Lock(this.width - 64, 64);
-		//this.component3 = new FCHMGauge(this.width / 4, this.width / 2, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component3 = new FCHMGauge(this.width / 2, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
 	
 		try {
 			this.backgroundImage = ImageIO.read(GridLayout1.class.getResource("/background.png"));
@@ -55,15 +55,15 @@ public class GridLayout1 implements Layout {
 	public void update() {
 		
 		this.component1.update();
-		//this.component2.update();
-		//this.component3.update();
+		this.component2.update();
+		this.component3.update();
 	}
 
 	@Override
 	public void render(Graphics graphics) {
 		this.component1.render(graphics);
-		//this.component2.render(graphics);
-		//this.component3.render(graphics);
+		this.component2.render(graphics);
+		this.component3.render(graphics);
 	}
 
 }

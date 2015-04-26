@@ -16,7 +16,7 @@ public class FCHMGauge extends RasterComponent {
 	public final int SPRITE_SIZE = 256;
 	public final int SPRITE_NUMBER = 2;
 
-	public FCHMGauge(int width, int xPosition, int yPosition, String variableName) {
+	public FCHMGauge(int xPosition, int yPosition, String variableName) {
 		
 		this.currentValue = 0;
 		this.xPosition = xPosition;
