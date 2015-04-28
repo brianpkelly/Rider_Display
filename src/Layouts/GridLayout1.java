@@ -10,6 +10,9 @@ package Layouts;
 import Components.Component;
 import Components.FCHMGauge;
 import Components.Lock;
+import Components.MDBarGauge;
+import Components.MDHCGaugeLeft;
+import Components.MDHCGaugeRight;
 import Data.CANCorder;
 
 import java.awt.Color;
@@ -32,11 +35,11 @@ public class GridLayout1 implements Layout {
 		
 		this.width = width;
 		this.height = height;
-		
-		this.component1 = new FCHMGauge(0, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
-		this.component2 = new FCHMGauge(this.width / 4, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
-		//this.component2 = new Lock(this.width - 64, 64);
-		this.component3 = new FCHMGauge(this.width / 2, this.height / 4, CANCorder.FRONT_TIRE_TEMPERATURE);
+		int xoffset = 113;
+		int yoffset = 65;
+		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component2 = new MDBarGauge(xoffset + 260, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component3 = new MDHCGaugeRight(xoffset + 260 + 240, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
 	
 		try {
 			this.backgroundImage = ImageIO.read(GridLayout1.class.getResource("/background.png"));
