@@ -25,7 +25,7 @@ public abstract class RasterComponent implements Component {
 		
 		// Maps the current value to a sprite
 		//int index =  (int) (spritesheet.NUMBER * (currentValue - minValue) / maxValue);
-		int index = currentValue;
+		int index = currentValue % spritesheet.NUMBER;
 		// The data read in from the CANCorder has to be analyzed to figure out how to render
 		switch (this.currentValue) {
 			case CANCorder.ERROR_MISSING_DATA:

@@ -6,6 +6,7 @@
  */
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -125,7 +126,7 @@ public class Display extends Canvas implements Runnable {
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		display.window.setLocationRelativeTo(null);
 		display.window.setVisible(true);
-		
+		display.window.getContentPane().setBackground(Color.BLACK);
 		// Start the display
 		display.start();
 	}	

@@ -14,7 +14,7 @@ import Graphics.SpriteSheet;
 public class FCHMGauge extends RasterComponent {
 	
 	public final int SPRITE_SIZE = 256;
-	public final int SPRITE_NUMBER = 2;
+	public final int SPRITE_NUMBER = 129;
 
 	public FCHMGauge(int xPosition, int yPosition, String variableName) {
 		
@@ -22,7 +22,6 @@ public class FCHMGauge extends RasterComponent {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.spritesheet = new SpriteSheet("/spritesheets/fchm_gauge.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
-		//this.spritesheet = new SpriteSheet("res/spritesheets/fchm_gauge_alpha.png", this.SPRITE_SIZE, this.SPRITE_SIZE, this.SPRITE_NUMBER);
 		this.cancorder = new CANCorder(variableName);
 		//double[] minMax = this.cancorder.getMinMax();
 		//this.minValue = minMax[0];
