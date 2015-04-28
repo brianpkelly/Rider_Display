@@ -102,7 +102,7 @@ public class Display extends Canvas implements Runnable {
 		BufferStrategy buffStrat = getBufferStrategy();
 		
 		if (buffStrat == null) {	
-			createBufferStrategy(1);
+			createBufferStrategy(3);
 			return;
 		}
 		
