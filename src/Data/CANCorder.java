@@ -29,6 +29,7 @@ public class CANCorder {
 	public final static String FRONT_TIRE_TEMPERATURE = "FrontTireTemp";
 	public final static String THROTTLE = "MotorCurrentSetpoint";
 	public final static String LOCK = "Locked";
+	public final static String CELL_1_TEMPERATURE = "CellTemp1";
 	
 	
 	// Integer constants to indicate errors with the data
@@ -56,7 +57,7 @@ public class CANCorder {
 		
 		double time = 0;
 		double value = 0;
-		
+		if (reader == null) return ERROR_MISSING_DATA;
 		try {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());

@@ -38,7 +38,7 @@ public class GridLayout1 implements Layout {
 		int xoffset = 113;
 		int yoffset = 65;
 		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
-		this.component2 = new MDBarGauge(xoffset + 260, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component2 = new MDBarGauge(xoffset + 260, yoffset, CANCorder.THROTTLE);
 		this.component3 = new MDHCGaugeRight(xoffset + 260 + 240, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
 	
 		try {
