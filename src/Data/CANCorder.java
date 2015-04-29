@@ -62,12 +62,10 @@ public class CANCorder {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());
 			reader.seek(0);
-			//reader.read(bytes);
-			//time = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
-			//reader.read(bytes);
-			//value = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
-			time = reader.readDouble();
-			value = reader.readDouble();
+			reader.read(bytes);
+			time = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
+			reader.read(bytes);
+			value = ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN).getDouble();
 			//System.out.println(value);
 		} catch (Exception e) {
 			e.printStackTrace();
