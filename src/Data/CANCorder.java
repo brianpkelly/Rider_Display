@@ -78,7 +78,7 @@ public class CANCorder {
 	public double[] getMinMax() {
 		
 		double min = 0;
-		double max = 0;
+		double max = 1;
 		
 		try {
 			//System.out.println(reader.readLine());

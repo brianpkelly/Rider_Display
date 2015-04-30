@@ -37,9 +37,9 @@ public class GridLayout1 implements Layout {
 		this.height = height;
 		int xoffset = 113;
 		int yoffset = 65;
-		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.THROTTLE);
 		this.component2 = new MDBarGauge(xoffset + 260, yoffset, CANCorder.THROTTLE);
-		this.component3 = new MDHCGaugeRight(xoffset + 260 + 240, yoffset, CANCorder.CELL_1_TEMPERATURE);
+		this.component3 = new MDHCGaugeRight(xoffset + 260 + 240, yoffset, CANCorder.THROTTLE);
 	
 		try {
 			this.backgroundImage = ImageIO.read(GridLayout1.class.getResource("/background.png"));

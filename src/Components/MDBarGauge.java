@@ -24,11 +24,9 @@ public class MDBarGauge extends RasterComponent {
 		this.yPosition = yPosition;
 		this.spritesheet = new SpriteSheet("/spritesheets/mdb_gauge.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
 		this.cancorder = new CANCorder(variableName);
-		//double[] minMax = this.cancorder.getMinMax();
-		//this.minValue = minMax[0];
-		//this.maxValue = minMax[1];
-		this.minValue = 0;
-		this.maxValue = 128;
+		double[] minMax = this.cancorder.getMinMax();
+		this.minValue = minMax[0];
+		this.maxValue = minMax[1];
 	}
 
 }

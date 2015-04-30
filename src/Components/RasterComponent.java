@@ -6,7 +6,7 @@ import Data.CANCorder;
 import Graphics.SpriteSheet;
 
 public abstract class RasterComponent implements Component {
-	protected int currentValue;
+	protected double currentValue;
 	protected double minValue;
 	protected double maxValue;
 	protected int xPosition;
@@ -17,17 +17,18 @@ public abstract class RasterComponent implements Component {
 	@Override
 	public void update() {
 		
-		this.currentValue = (int) this.cancorder.getValue();
+		this.currentValue = this.cancorder.getValue();
 	} 
 
 	@Override
 	public void render(Graphics graphics) {
 		
 		// Maps the current value to a sprite
-		//int index =  (int) (spritesheet.NUMBER * (currentValue - minValue) / maxValue);
-		int index = currentValue % spritesheet.NUMBER;
+		int index =  (int) (spritesheet.NUMBER * (currentValue - minValue) / maxValue);
+		index %= this.maxValue;
+		
 		// The data read in from the CANCorder has to be analyzed to figure out how to render
-		switch (this.currentValue) {
+		switch ((int) this.currentValue) {
 			case CANCorder.ERROR_MISSING_DATA:
 				// The data is bad and nothing should be rendered
 				System.out.println("Bad data");
