@@ -13,8 +13,8 @@ import Graphics.SpriteSheet;
 
 public class MDHCGaugeRight extends RasterComponent {
 	
-	public final int SPRITE_HEIGHT = 448;
-	public final int SPRITE_WIDTH = 261;
+	public final int SPRITE_HEIGHT = 428;
+	public final int SPRITE_WIDTH = 250;
 	public final int SPRITE_NUMBER = 129;
 
 	public MDHCGaugeRight(int xPosition, int yPosition, String variableName) {
@@ -22,7 +22,7 @@ public class MDHCGaugeRight extends RasterComponent {
 		this.currentValue = 0;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("/spritesheets/mdhc_gauge_right.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
+		this.spritesheet = new SpriteSheet("/spritesheets/mdhc_gauge_right_720p.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
 		this.cancorder = new CANCorder(variableName);
 		double[] minMax = this.cancorder.getMinMax();
 		this.minValue = minMax[0];

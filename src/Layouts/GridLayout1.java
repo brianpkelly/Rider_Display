@@ -35,11 +35,11 @@ public class GridLayout1 implements Layout {
 		
 		this.width = width;
 		this.height = height;
-		int xoffset = 113;
-		int yoffset = 65;
-		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.THROTTLE);
-		this.component2 = new MDBarGauge(xoffset + 260, yoffset, CANCorder.THROTTLE);
-		this.component3 = new MDHCGaugeRight(xoffset + 260 + 240, yoffset, CANCorder.THROTTLE);
+		int xoffset = -10; // 113;
+		int yoffset = 10; //65;
+		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.FRONT_BRAKE);
+		this.component2 = new MDBarGauge(xoffset + 250, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
+		this.component3 = new MDHCGaugeRight(xoffset + 250 + 230, yoffset, CANCorder.THROTTLE);
 	
 		try {
 			this.backgroundImage = ImageIO.read(GridLayout1.class.getResource("/background.png"));

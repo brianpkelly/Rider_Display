@@ -13,8 +13,8 @@ import Graphics.SpriteSheet;
 
 public class MDBarGauge extends RasterComponent {
 	
-	public final int SPRITE_HEIGHT = 448;
-	public final int SPRITE_WIDTH = 240;
+	public final int SPRITE_HEIGHT = 430;
+	public final int SPRITE_WIDTH = 230;
 	public final int SPRITE_NUMBER = 129;
 
 	public MDBarGauge(int xPosition, int yPosition, String variableName) {
@@ -22,7 +22,7 @@ public class MDBarGauge extends RasterComponent {
 		this.currentValue = 0;
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.spritesheet = new SpriteSheet("/spritesheets/mdb_gauge.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
+		this.spritesheet = new SpriteSheet("/spritesheets/mdb_gauge_720p.png", this.SPRITE_HEIGHT, this.SPRITE_WIDTH, this.SPRITE_NUMBER);
 		this.cancorder = new CANCorder(variableName);
 		double[] minMax = this.cancorder.getMinMax();
 		this.minValue = minMax[0];

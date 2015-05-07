@@ -30,6 +30,7 @@ public class CANCorder {
 	public final static String THROTTLE = "MotorCurrentSetpoint";
 	public final static String LOCK = "Locked";
 	public final static String CELL_1_TEMPERATURE = "CellTemp1";
+	public final static String FRONT_BRAKE = "FrontBrakePressure";
 	
 	
 	// Integer constants to indicate errors with the data
@@ -77,20 +78,25 @@ public class CANCorder {
 	
 	public double[] getMinMax() {
 		
-		double min = 0;
-		double max = 1;
+		String unit = "";
+		double warn_start = 0;
+		double warn_end = 1;
+		double ok_start = 0;
+		double ok_end = 1;
 		
 		try {
 			//System.out.println(reader.readLine());
 			//System.out.println(reader.readLine());
 			Scanner s = new Scanner(new File(DIR + "meta/" + variableName));
-			min = s.nextDouble();
-			max = s.nextDouble();
+			unit = s.nextLine();
+			ok_start = s.nextDouble();
+			ok_end = s.nextDouble();
+			warn_start = s.nextDouble();
+			warn_end = s.nextDouble();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		double[] minMax = {min, max};
+		double[] minMax = {warn_start, warn_end};
 		return minMax;
 	}
 }

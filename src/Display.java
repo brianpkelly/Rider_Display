@@ -23,8 +23,8 @@ public class Display extends Canvas implements Runnable {
 	// Keep the compiler happy
 	static final long serialVersionUID = 42L;
 	
-	public static int width = 1024;
-	public static int height = 600;
+	public static int width = 720;// 1024;
+	public static int height = 480; //600;
 	public static int scale = 1;
 	
 	// Controls when the Display runs
@@ -80,7 +80,7 @@ public class Display extends Canvas implements Runnable {
 			fpsCount++;
 			if (System.currentTimeMillis() - timeCount >= 1000) {
 				timeCount += 1000;
-				this.window.setTitle("Rider Display | FPS: " + fpsCount);
+				//this.window.setTitle("Rider Display | FPS: " + fpsCount);
 				fpsCount = 0;
 			}
 		}
@@ -120,7 +120,8 @@ public class Display extends Canvas implements Runnable {
 		
 		// Set a variety of JFrame properties for the Display
 		display.window.setResizable(false);
-		display.window.setTitle("Rider Display");
+		display.window.setUndecorated(true);
+		//display.window.setTitle("Rider Display");
 		display.window.add(display);
 		display.window.pack();
 		display.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
