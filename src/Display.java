@@ -38,11 +38,11 @@ public class Display extends Canvas implements Runnable {
 	private JFrame window;
 	private GridLayout1 layout;
 	
-	public Display() {
+	public Display(String variable1, String variable2, String variable3) {
 		
 		// Sets the size of the Canvas that the Display renders to.
 		this.setPreferredSize(new Dimension((int) (width * scale), (int) (height * scale)));
-		this.layout = new GridLayout1(width, height);
+		this.layout = new GridLayout1(width, height, variable1, variable2, variable3);
 		this.window = new JFrame();
 	}
 	
@@ -116,7 +116,7 @@ public class Display extends Canvas implements Runnable {
 
 	public static void main(String[] args) {
 		
-		Display display = new Display();
+		Display display = new Display(args[0], args[1], args[2]);
 		
 		// Set a variety of JFrame properties for the Display
 		display.window.setResizable(false);

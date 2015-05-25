@@ -31,15 +31,15 @@ public class GridLayout1 implements Layout {
 	private int height;
 	private BufferedImage backgroundImage;
 	
-	public GridLayout1(int width, int height) {
+	public GridLayout1(int width, int height, String variable1, String variable2, String variable3) {
 		
 		this.width = width;
 		this.height = height;
 		int xoffset = -10; // 113;
 		int yoffset = 10; //65;
-		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, CANCorder.FRONT_BRAKE);
-		this.component2 = new MDBarGauge(xoffset + 250, yoffset, CANCorder.FRONT_TIRE_TEMPERATURE);
-		this.component3 = new MDHCGaugeRight(xoffset + 250 + 230, yoffset, CANCorder.THROTTLE);
+		this.component1 = new MDHCGaugeLeft(xoffset + 0, yoffset, variable1);
+		this.component2 = new MDBarGauge(xoffset + 250, yoffset, variable2);
+		this.component3 = new MDHCGaugeRight(xoffset + 250 + 230, yoffset, variable3);
 	
 		try {
 			this.backgroundImage = ImageIO.read(GridLayout1.class.getResource("/background.png"));
